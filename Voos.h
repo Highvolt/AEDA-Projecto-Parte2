@@ -56,7 +56,7 @@ private:
 
 public:
 	Aviao(string matricula, string nome, int peso, string tipo, string descricao, string categoria);
-	bool operator=(const Aviao &b){
+	bool operator==(const Aviao &b){
 		return this->matricula==b.matricula;
 	}
 };
