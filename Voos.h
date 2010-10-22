@@ -23,7 +23,7 @@ private:
 public:
 
 	Companhia_aerea(string & sigla, string & nme_companhia);
-	void add_plane(Aviao aviao);
+	int add_plane(Aviao aviao);
 
 };
 
