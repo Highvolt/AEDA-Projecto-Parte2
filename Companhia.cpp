@@ -5,7 +5,7 @@
  *      Author: pedroborges
  */
 
-#include "Voos.h"
+#include "Companhia.h"
 
 using namespace std;
 
@@ -115,4 +115,8 @@ int Companhia_aerea::delete_crew(Tripulante tripulante){
 	}
 	//adicionar gest‹o de erros
 	return -1;
+}
+
+hora_data::hora_data(int hora, int min,int dia,int mes,int ano){
+
 }

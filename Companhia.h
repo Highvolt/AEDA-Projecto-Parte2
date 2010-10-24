@@ -5,8 +5,8 @@
  *      Author: pedroborges
  */
 
-#ifndef VOOS_H_
-#define VOOS_H_
+#ifndef COMPANHIA_H_
+#define COMPANHIA_H_
 #include <vector>
 #include <string>
 
@@ -68,21 +68,6 @@ public:
 	}
 };
 
-
-
-class Voos{
-private:
-	struct horas_ut{
-		int inicio_h;
-		int inicio_min;
-		int fim_h;
-		int fim_min;
-	};
-
-public:
-	Voos();
-	virtual ~Voos();
-};
 
 
 
