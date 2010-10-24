@@ -12,32 +12,39 @@
 
 using namespace std;
 
-class Tripulantes;
+class Tripulante;
 class Aviao;
+
+
 
 class Companhia_aerea{
 private:
-	vector<Tripulantes*> tripulantes;
+	vector<Tripulante*> tripulantes;
 	vector<Aviao*> avioes;
 	string sigla, nme_companhia;
 public:
-
 	Companhia_aerea(string & sigla, string & nme_companhia);
 	int add_plane(Aviao aviao);
-
+	int delete_plane(Aviao aviao);
+	int delete_plane(int i);
+	int add_crew(Tripulante tripulante);
+	int delete_crew(Tripulante tripulante);
+	int delete_crew(int i);
 };
 
 
 
 
-class Tripulantes{
+class Tripulante{
 private:
 	int numero, salario_hora;
 	string categoria, nome;
 
 public:
-	Tripulantes(int numero, string categoria, string nome, int salario_hora);
-
+	Tripulante(int numero, string categoria, string nome, int salario_hora);
+	bool operator==(const Tripulante &b){
+		return this->numero==b.numero;
+	}
 
 };
 

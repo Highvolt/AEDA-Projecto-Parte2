@@ -32,7 +32,7 @@ Tipo_de_aviao::Tipo_de_aviao(string tipo, string descricao, string categoria){
 	this->categoria=categoria;
 }
 
-Tripulantes::Tripulantes(int numero, string categoria, string nome, int salario_hora){
+Tripulante::Tripulante(int numero, string categoria, string nome, int salario_hora){
 	this->numero=numero;
 	this->categoria=categoria;
 	this->nome=nome;
@@ -47,6 +47,7 @@ Companhia_aerea::Companhia_aerea(string &sigla, string &nme_companhia){
 int Companhia_aerea::add_plane(Aviao aviao){
 	for(vector<Aviao*>::iterator it=avioes.begin(); it<avioes.end(); it++){
 		if(**it==aviao){
+			//adicionar gestao de erros
 			return -1;
 		}
 	}
@@ -54,4 +55,64 @@ int Companhia_aerea::add_plane(Aviao aviao){
 	return 0;
 }
 
+int Companhia_aerea::delete_plane(Aviao aviao){
+	for(vector<Aviao*>::iterator it=avioes.begin(); it<avioes.end(); it++){
+		if(**it==aviao){
+			avioes.erase(it);
+			return 0;
+		}
+	}
+	//adicionar gest‹o de erros
+	return -1;
+}
 
+
+int Companhia_aerea::delete_plane(int i){ //confirmar resultado
+	if(i<avioes.size()){
+		vector<Aviao*>::iterator it=avioes.begin();
+		for(;i>0;it++){
+		--i;
+		}
+		avioes.erase(it);
+		return 0;
+	}
+
+	//adicionar gest‹o de erros
+	return -1;
+}
+
+int Companhia_aerea::add_crew(Tripulante tripulante){
+	for(vector<Tripulante*>::iterator it=tripulantes.begin(); it<tripulantes.end(); it++){
+		if(**it==tripulante){
+			//adicionar gest‹o de erros
+			return -1;
+		}
+	}
+
+	return 0;
+}
+
+int Companhia_aerea::delete_crew(int i){  //confirmar resultado
+	if(i<tripulantes.size()){
+		vector<Tripulante*>::iterator it=tripulantes.begin();
+		for(;i>0;it++){
+		--i;
+		}
+		tripulantes.erase(it);
+		return 0;
+	}
+
+	//adicionar gest‹o de erros
+	return -1;
+}
+
+int Companhia_aerea::delete_crew(Tripulante tripulante){
+	for(vector<Tripulante*>::iterator it=tripulantes.begin(); it<tripulantes.end(); it++){
+		if(**it==tripulante){
+			tripulantes.erase(it);
+			return 0;
+		}
+	}
+	//adicionar gest‹o de erros
+	return -1;
+}
