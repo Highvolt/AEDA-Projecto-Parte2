@@ -9,6 +9,11 @@
 #include "Companhia.h"
 #include "misc.h"
 
+typedef void (*funcao)(Companhia_aerea*);
+
 int main(){
+
 	return 0;
 }
+
+

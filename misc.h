@@ -3,12 +3,13 @@
 #include <vector>
 #include <string>
 #include <stdlib.h>
+#include <Companhia.h>
 
 using namespace std;
 
-typedef void (*funcao)();
+typedef void (*funcao)(Companhia_aerea*);
 
-bool menu(vector<string> names, vector<funcao> funcoes){
+bool menu_companhia(vector<string> names, vector<funcao> funcoes,Companhia_aerea* comp){
 	if(names.size()!=funcoes.size()){
 		return false;
 	}
@@ -25,7 +26,7 @@ bool menu(vector<string> names, vector<funcao> funcoes){
 		opt=atoi(opt_temp.c_str());
 	}
 
-	funcoes[opt]();
+	funcoes[opt](comp);
 
 	return true;
 
