@@ -9,15 +9,6 @@
 
 using namespace std;
 
-Voos::Voos() {
-	// TODO Auto-generated constructor stub
-
-}
-
-Voos::~Voos() {
-	// TODO Auto-generated destructor stub
-}
-
 
 
 Aviao::Aviao(string matricula, string nome, int peso, string tipo, string descricao, string categoria): Tipo_de_aviao::Tipo_de_aviao(tipo,descricao,categoria){
@@ -115,8 +106,4 @@ int Companhia_aerea::delete_crew(Tripulante tripulante){
 	}
 	//adicionar gest‹o de erros
 	return -1;
-}
-
-hora_data::hora_data(int hora, int min,int dia,int mes,int ano){
-
 }

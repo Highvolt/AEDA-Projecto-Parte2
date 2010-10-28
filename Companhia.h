@@ -37,8 +37,10 @@ public:
 
 class Tripulante{
 private:
-	int numero, salario_hora;
-	string categoria, nome;
+	int numero;
+	int salario_hora;
+	string categoria;
+	string nome;
 
 public:
 	Tripulante(int numero, string categoria, string nome, int salario_hora);
@@ -50,7 +52,9 @@ public:
 
 class Tipo_de_aviao{
 private:
-	string tipo, descricao, categoria;
+	string tipo;
+	string descricao;
+	string categoria;
 public:
 	Tipo_de_aviao(string tipo, string descricao, string categoria);
 };
@@ -71,4 +75,4 @@ public:
 
 
 
-#endif /* VOOS_H_ */
+#endif
