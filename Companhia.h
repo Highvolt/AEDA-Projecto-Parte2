@@ -30,6 +30,7 @@ public:
 	int add_crew(Tripulante tripulante);
 	int delete_crew(Tripulante tripulante);
 	int delete_crew(int i);
+
 };
 
 
