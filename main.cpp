@@ -6,7 +6,8 @@
  */
 
 
-#include "Voos.h"
+#include "Companhia.h"
+#include "misc.h"
 
 int main(){
 	return 0;

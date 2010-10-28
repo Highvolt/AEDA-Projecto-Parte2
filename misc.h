@@ -18,9 +18,9 @@ bool menu(vector<string> names, vector<funcao> funcoes){
 	}
 
 	string opt_temp="";
-	unsigned int opt=n+1;
+	unsigned int opt=names.size()+1;
 
-	while(opt>n){
+	while(opt>names.size()){
 		cout<<"\n\n \t opcao"<<"[0-"<<names.size()-1<<"] :"<<endl;
 		opt=atoi(opt_temp.c_str());
 	}

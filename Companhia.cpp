@@ -23,6 +23,46 @@ Tipo_de_aviao::Tipo_de_aviao(string tipo, string descricao, string categoria){
 	this->categoria=categoria;
 }
 
+string Tripulante::getCategoria() const
+{
+    return categoria;
+}
+
+string Tripulante::getNome() const
+{
+    return nome;
+}
+
+int Tripulante::getNumero() const
+{
+    return numero;
+}
+
+int Tripulante::getSalario_hora() const
+{
+    return salario_hora;
+}
+
+void Tripulante::setCategoria(string categoria)
+{
+    this->categoria = categoria;
+}
+
+void Tripulante::setNome(string nome)
+{
+    this->nome = nome;
+}
+
+void Tripulante::setNumero(int numero)
+{
+    this->numero = numero;
+}
+
+void Tripulante::setSalario_hora(int salario_hora)
+{
+    this->salario_hora = salario_hora;
+}
+
 Tripulante::Tripulante(int numero, string categoria, string nome, int salario_hora){
 	this->numero=numero;
 	this->categoria=categoria;

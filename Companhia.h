@@ -31,6 +31,7 @@ public:
 	int delete_crew(Tripulante tripulante);
 	int delete_crew(int i);
 
+
 };
 
 
@@ -45,6 +46,15 @@ private:
 
 public:
 	Tripulante(int numero, string categoria, string nome, int salario_hora);
+    string getCategoria() const;
+    string getNome() const;
+    int getNumero() const;
+
+    int getSalario_hora() const;
+    void setCategoria(string categoria);
+    void setNome(string nome);
+    void setNumero(int numero);
+    void setSalario_hora(int salario_hora);
 	bool operator==(const Tripulante &b){
 		return this->numero==b.numero;
 	}
@@ -58,6 +68,36 @@ private:
 	string categoria;
 public:
 	Tipo_de_aviao(string tipo, string descricao, string categoria);
+    string getCategoria() const
+    {
+        return categoria;
+    }
+
+    string getDescricao() const
+    {
+        return descricao;
+    }
+
+    string getTipo() const
+    {
+        return tipo;
+    }
+
+    void setCategoria(string categoria)
+    {
+        this->categoria = categoria;
+    }
+
+    void setDescricao(string descricao)
+    {
+        this->descricao = descricao;
+    }
+
+    void setTipo(string tipo)
+    {
+        this->tipo = tipo;
+    }
+
 };
 
 class Aviao: public Tipo_de_aviao{
@@ -68,7 +108,37 @@ private:
 
 public:
 	Aviao(string matricula, string nome, int peso, string tipo, string descricao, string categoria);
-	bool operator==(const Aviao &b){
+    string getMatricula() const
+    {
+        return matricula;
+    }
+
+    string getNome() const
+    {
+        return nome;
+    }
+
+    int getPeso() const
+    {
+        return peso;
+    }
+
+    void setMatricula(string matricula)
+    {
+        this->matricula = matricula;
+    }
+
+    void setNome(string nome)
+    {
+        this->nome = nome;
+    }
+
+    void setPeso(int peso)
+    {
+        this->peso = peso;
+    }
+
+    bool operator==(const Aviao &b){
 		return this->matricula==b.matricula;
 	}
 };
