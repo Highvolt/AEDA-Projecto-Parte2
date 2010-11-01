@@ -7,8 +7,12 @@
 
 #include "Plano_de_voo.h"
 
-Plano_de_voo::Plano_de_voo() {
-	// TODO Auto-generated constructor stub
+Plano_de_voo::Plano_de_voo(int hora_partida,int min_partida, int dia_partida, int mes_partida, int ano_partida, int hora_chegada,int min_chegada, int dia_chegada, int mes_chegada, int ano_chegada, Companhia_aerea* companhia, string origem, string destino, Aviao* aviao, Companhia_aerea* companhia,int n_passageiros){
+	this->partida.hora=hora_partida;
+	this->partida.min=min_partida;
+	this->partida.dia=dia_partida;
+	this->partida.mes=mes_partida;
+	this->partida.ano=ano_partida;
 
 }
 

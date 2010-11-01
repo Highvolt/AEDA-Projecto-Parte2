@@ -30,6 +30,12 @@ public:
 	int add_crew(Tripulante tripulante);
 	int delete_crew(Tripulante tripulante);
 	int delete_crew(int i);
+    vector<Aviao*> getAvioes() const;
+    string getSigla() const;
+    vector<Tripulante*> getTripulantes() const;
+    void setAvioes(vector<Aviao*> avioes);
+    void setSigla(string sigla);
+    void setTripulantes(vector<Tripulante*> tripulantes);
 
 
 };

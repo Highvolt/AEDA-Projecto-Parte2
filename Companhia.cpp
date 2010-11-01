@@ -123,6 +123,36 @@ int Companhia_aerea::add_crew(Tripulante tripulante){
 	return 0;
 }
 
+vector<Aviao*> Companhia_aerea::getAvioes() const
+{
+    return avioes;
+}
+
+string Companhia_aerea::getSigla() const
+{
+    return sigla;
+}
+
+vector<Tripulante*> Companhia_aerea::getTripulantes() const
+{
+    return tripulantes;
+}
+
+void Companhia_aerea::setAvioes(vector<Aviao*> avioes)
+{
+    this->avioes = avioes;
+}
+
+void Companhia_aerea::setSigla(string sigla)
+{
+    this->sigla = sigla;
+}
+
+void Companhia_aerea::setTripulantes(vector<Tripulante*> tripulantes)
+{
+    this->tripulantes = tripulantes;
+}
+
 int Companhia_aerea::delete_crew(int i){  //confirmar resultado
 	if(i<tripulantes.size()){
 		vector<Tripulante*>::iterator it=tripulantes.begin();
