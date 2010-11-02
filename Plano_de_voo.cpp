@@ -15,13 +15,13 @@ void set_horas(int hora,int min, int dia, int mes, int ano, horas_data* dest){
 		dest->min=min;
 		switch(mes){
 		case 1 || 3 || 5 || 7 || 8 ||10 || 12: if(dia<=31){dest->dia=dia;}else{dest->dia=-1;} break;
-		case 2: if(float(ano%4.0)==0){
-			if(float (ano%100.0)==0){
-				if(float(ano%400)==0){
+		case 2: if(ano%4.0==0){
+			if(ano%100==0){
+				if(ano%400==0){
 					if(dia<=29)
 						dest->dia=dia;
 				}
-				dest->dia=-1;
+				else{dest->dia=-1;}
 			}
 			if(dia<=29)
 				dest->dia=dia;
@@ -49,6 +49,12 @@ Plano_de_voo::Plano_de_voo(int hora_partida,int min_partida, int dia_partida, in
 	this->aviao=aviao;
 }
 
+bool Plano_de_voo::valid(){
+	if(this->partida.hora!=-1 && this->partida.min!=-1 && this->partida.dia!=-1 && this->partida.mes!=-1 && this->partida.ano!=-1 && this->chegada.hora!=-1 && this->chegada.min!=-1 && this->chegada.dia!=-1 && this->chegada.mes!=-1 && this->chegada.ano!=-1){
+		return true;
+	}
+	return false;
+}
 
 
 

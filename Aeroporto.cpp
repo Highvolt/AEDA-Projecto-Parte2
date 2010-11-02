@@ -10,7 +10,7 @@
 namespace std {
 
 Aeroporto::Aeroporto() {
-	// TODO Auto-generated constructor stub
+
 
 }
 
