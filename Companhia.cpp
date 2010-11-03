@@ -78,7 +78,7 @@ Companhia_aerea::Companhia_aerea(string &sigla, string &nme_companhia){
 int Companhia_aerea::add_plane(Aviao aviao){
 	for(vector<Aviao*>::iterator it=avioes.begin(); it<avioes.end(); it++){
 		if(**it==aviao){
-			//adicionar gestao de erros
+			throw aviao_ja_existe(&aviao);
 			return -1;
 		}
 	}

@@ -9,11 +9,13 @@
 #define COMPANHIA_H_
 #include <vector>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 class Tripulante;
 class Aviao;
+
 
 
 
@@ -146,6 +148,20 @@ public:
 
     bool operator==(const Aviao &b){
 		return this->matricula==b.matricula;
+	}
+};
+
+
+class aviao_ja_existe{
+private:
+	Aviao* existente;
+public:
+	aviao_ja_existe(Aviao* aviao){
+		existente=aviao;
+	}
+	friend ostream & operator<<(ostream & out, aviao_ja_existe Dados){
+		out<<"O Aviao com a matricula "<<Dados.existente->getMatricula()<<" ja existe"<<endl;
+		return out;
 	}
 };
 

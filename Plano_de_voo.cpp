@@ -15,7 +15,7 @@ void set_horas(int hora,int min, int dia, int mes, int ano, horas_data* dest){
 		dest->min=min;
 		switch(mes){
 		case 1 || 3 || 5 || 7 || 8 ||10 || 12: if(dia<=31){dest->dia=dia;}else{dest->dia=-1;} break;
-		case 2: if(ano%4.0==0){
+		case 2: if(ano%4==0){
 			if(ano%100==0){
 				if(ano%400==0){
 					if(dia<=29)
