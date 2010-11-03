@@ -24,7 +24,9 @@ public:
 	virtual ~Aeroporto();
 	bool add_plano();
 	bool add_companhia();
-
+	bool delete_plane(Companhia_aerea* companhia, Aviao* aviao); // procurar todos os planos de voo com o aviao x e apaga-los avisando o utilizador que vai apagar planos de voo se continuar...
+	bool existe_pv_aviao(Companhia_aerea* companhia, Aviao* aviao);  //devolve true se existir pelo menos um plano de voo com o Aviao aviao
+	bool apaga_pv_aviao(Companhia_aerea* companhia, Aviao* aviao); //devolve true se apagar
 
 };
 

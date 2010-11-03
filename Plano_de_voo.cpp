@@ -49,12 +49,94 @@ Plano_de_voo::Plano_de_voo(int hora_partida,int min_partida, int dia_partida, in
 	this->aviao=aviao;
 }
 
+Aviao *Plano_de_voo::getAviao() const
+{
+    return aviao;
+}
+
+horas_data Plano_de_voo::getChegada() const
+{
+    return chegada;
+}
+
+Companhia_aerea *Plano_de_voo::getCompanhia() const
+{
+    return companhia;
+}
+
+string Plano_de_voo::getDestino() const
+{
+    return destino;
+}
+
+int Plano_de_voo::getDo_voo() const
+{
+    return n_do_voo;
+}
+
+string Plano_de_voo::getOrigem() const
+{
+    return origem;
+}
+
+horas_data Plano_de_voo::getPartida() const
+{
+    return partida;
+}
+
+int Plano_de_voo::getPassageiros() const
+{
+    return n_passageiros;
+}
+
+void Plano_de_voo::setAviao(Aviao *aviao)
+{
+    this->aviao = aviao;
+}
+
+void Plano_de_voo::setChegada(horas_data chegada)
+{
+    this->chegada = chegada;
+}
+
+void Plano_de_voo::setCompanhia(Companhia_aerea *companhia)
+{
+    this->companhia = companhia;
+}
+
+void Plano_de_voo::setDestino(string destino)
+{
+    this->destino = destino;
+}
+
+void Plano_de_voo::setDo_voo(int n_do_voo)
+{
+    this->n_do_voo = n_do_voo;
+}
+
+void Plano_de_voo::setOrigem(string origem)
+{
+    this->origem = origem;
+}
+
+void Plano_de_voo::setPartida(horas_data partida)
+{
+    this->partida = partida;
+}
+
+void Plano_de_voo::setPassageiros(int n_passageiros)
+{
+    this->n_passageiros = n_passageiros;
+}
+
 bool Plano_de_voo::valid(){
 	if(this->partida.hora!=-1 && this->partida.min!=-1 && this->partida.dia!=-1 && this->partida.mes!=-1 && this->partida.ano!=-1 && this->chegada.hora!=-1 && this->chegada.min!=-1 && this->chegada.dia!=-1 && this->chegada.mes!=-1 && this->chegada.ano!=-1){
 		return true;
 	}
 	return false;
 }
+
+
 
 
 

@@ -38,6 +38,9 @@ public:
     void setAvioes(vector<Aviao*> avioes);
     void setSigla(string sigla);
     void setTripulantes(vector<Tripulante*> tripulantes);
+    bool operator==(Companhia_aerea & a){
+    	return this->sigla==a.getSigla();
+    }
 
 
 };
