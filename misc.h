@@ -9,9 +9,9 @@ using namespace std;
 
 typedef void (*funcao_generica) (void);
 
-bool menu_generico(vector<string> &names, vector<funcao_generica> &funcoes){
+int menu_generico(vector<string> &names, vector<funcao_generica> &funcoes){
 	if(names.size()!=funcoes.size()){
-		return false;
+		return -1;
 	}
 
 	for(unsigned int n=0;n<names.size();n++){
@@ -29,7 +29,7 @@ bool menu_generico(vector<string> &names, vector<funcao_generica> &funcoes){
 
 	funcoes[opt-1]();
 
-	return true;
+	return opt;
 
 }
 

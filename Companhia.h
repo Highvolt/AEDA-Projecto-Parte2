@@ -21,8 +21,8 @@ class Aviao;
 
 class Companhia_aerea{
 private:
-	vector<Tripulante*> tripulantes;
-	vector<Aviao*> avioes;
+	vector<Tripulante> tripulantes;
+	vector<Aviao> avioes;
 	string sigla, nme_companhia;
 public:
 	Companhia_aerea(string & sigla, string & nme_companhia);
@@ -32,12 +32,15 @@ public:
 	int add_crew(Tripulante tripulante);
 	int delete_crew(Tripulante tripulante);
 	int delete_crew(int i);
-    vector<Aviao*> getAvioes() const;
+    vector<Aviao> getAvioes() const;
     string getSigla() const;
-    vector<Tripulante*> getTripulantes() const;
-    void setAvioes(vector<Aviao*> avioes);
+    vector<Tripulante> getTripulantes() const;
+    string getNome(){
+    	return this->nme_companhia;
+    }
+    void setAvioes(vector<Aviao> avioes);
     void setSigla(string sigla);
-    void setTripulantes(vector<Tripulante*> tripulantes);
+    void setTripulantes(vector<Tripulante> tripulantes);
     bool operator==(Companhia_aerea & a){
     	return this->sigla==a.getSigla();
     }

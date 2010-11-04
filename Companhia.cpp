@@ -76,19 +76,19 @@ Companhia_aerea::Companhia_aerea(string &sigla, string &nme_companhia){
 }
 
 int Companhia_aerea::add_plane(Aviao aviao){
-	for(vector<Aviao*>::iterator it=avioes.begin(); it<avioes.end(); it++){
-		if(**it==aviao){
+	for(vector<Aviao>::iterator it=avioes.begin(); it<avioes.end(); it++){
+		if(*it==aviao){
 			throw aviao_ja_existe(&aviao);
 			return -1;
 		}
 	}
-	avioes.push_back(&aviao);
+	avioes.push_back(aviao);
 	return 0;
 }
 
 int Companhia_aerea::delete_plane(Aviao aviao){
-	for(vector<Aviao*>::iterator it=avioes.begin(); it<avioes.end(); it++){
-		if(**it==aviao){
+	for(vector<Aviao>::iterator it=avioes.begin(); it<avioes.end(); it++){
+		if(*it==aviao){
 			avioes.erase(it);
 			return 0;
 		}
@@ -100,7 +100,7 @@ int Companhia_aerea::delete_plane(Aviao aviao){
 
 int Companhia_aerea::delete_plane(int i){ //confirmar resultado
 	if(i<avioes.size()){
-		vector<Aviao*>::iterator it=avioes.begin();
+		vector<Aviao>::iterator it=avioes.begin();
 		for(;i>0;it++){
 		--i;
 		}
@@ -113,17 +113,18 @@ int Companhia_aerea::delete_plane(int i){ //confirmar resultado
 }
 
 int Companhia_aerea::add_crew(Tripulante tripulante){
-	for(vector<Tripulante*>::iterator it=tripulantes.begin(); it<tripulantes.end(); it++){
-		if(**it==tripulante){
+	for(vector<Tripulante>::iterator it=tripulantes.begin(); it<tripulantes.end(); it++){
+		if(*it==tripulante){
 			//adicionar gest‹o de erros
 			return -1;
 		}
 	}
+	tripulantes.push_back(tripulante);
 
 	return 0;
 }
 
-vector<Aviao*> Companhia_aerea::getAvioes() const
+vector<Aviao> Companhia_aerea::getAvioes() const
 {
     return avioes;
 }
@@ -133,12 +134,12 @@ string Companhia_aerea::getSigla() const
     return sigla;
 }
 
-vector<Tripulante*> Companhia_aerea::getTripulantes() const
+vector<Tripulante> Companhia_aerea::getTripulantes() const
 {
     return tripulantes;
 }
 
-void Companhia_aerea::setAvioes(vector<Aviao*> avioes)
+void Companhia_aerea::setAvioes(vector<Aviao> avioes)
 {
     this->avioes = avioes;
 }
@@ -148,14 +149,14 @@ void Companhia_aerea::setSigla(string sigla)
     this->sigla = sigla;
 }
 
-void Companhia_aerea::setTripulantes(vector<Tripulante*> tripulantes)
+void Companhia_aerea::setTripulantes(vector<Tripulante> tripulantes)
 {
     this->tripulantes = tripulantes;
 }
 
 int Companhia_aerea::delete_crew(int i){  //confirmar resultado
 	if(i<tripulantes.size()){
-		vector<Tripulante*>::iterator it=tripulantes.begin();
+		vector<Tripulante>::iterator it=tripulantes.begin();
 		for(;i>0;it++){
 		--i;
 		}
@@ -168,8 +169,8 @@ int Companhia_aerea::delete_crew(int i){  //confirmar resultado
 }
 
 int Companhia_aerea::delete_crew(Tripulante tripulante){
-	for(vector<Tripulante*>::iterator it=tripulantes.begin(); it<tripulantes.end(); it++){
-		if(**it==tripulante){
+	for(vector<Tripulante>::iterator it=tripulantes.begin(); it<tripulantes.end(); it++){
+		if(*it==tripulante){
 			tripulantes.erase(it);
 			return 0;
 		}
