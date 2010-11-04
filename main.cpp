@@ -23,6 +23,13 @@ void addcomp();
 void gerenciar_comp();
 void sair();
 void gerir_comp(Companhia_aerea* comp);
+void sair(Companhia_aerea* comp);
+void addav(Companhia_aerea* comp);
+void delav(Companhia_aerea* comp);
+void editav(Companhia_aerea* comp);
+void addtri(Companhia_aerea* comp);
+void deltri(Companhia_aerea* comp);
+void edittri(Companhia_aerea* comp);
 
 //*********
 
@@ -37,7 +44,7 @@ int main(){
 	vector<funcao_generica> func(&func_ar[0],&func_ar[3]);
 	int opt=0;
 	while (opt!=3){
-	opt=menu_generico(names,func);
+		opt=menu_generico(names,func);
 
 	}
 
@@ -54,7 +61,7 @@ void addcomp(){
 	try{
 		aeroporto.add_companhia(sigla,name);
 	}
-	catch(Companhia_ja_existe x){
+	catch(Companhia_ja_existe & x){
 		cout<<x<<endl;
 
 	}
@@ -74,7 +81,52 @@ void gerenciar_comp(){
 
 void gerir_comp(Companhia_aerea* comp){
 
+	string names_ar[]={"Adiconar aviao:","Apagar aviao:","editar aviao", "Adicionar Tripulante", "Apagar tripulante","editar tripulante","sair"};
+	funcao func_ar[]={&addav,&delav,&editav,&addtri,&deltri,&edittri,&sair};
+	vector<string> names(&names_ar[0],&names_ar[7]);
+	vector<funcao> func(&func_ar[0],&func_ar[7]);
+	int opt=0;
+	while(opt!=7){
+	opt=menu_companhia(names,func,comp);
+	}
+
+
 }
+
+void addav(Companhia_aerea* comp){
+	string matricula,  nome,   tipo,  descricao,  categoria;
+	int peso=-1;
+	cout<<"Matricula: ";
+	getline(cin,matricula);
+	cout<<"\nNome: ";
+	getline(cin,nome);
+	cout<<"\nPeso: ";
+	string pesotmp;
+	while(peso<=0){
+		getline(cin, pesotmp);
+		peso=atoi(pesotmp.c_str());
+	}
+	cout<<"\nTipo: ";
+	getline(cin,tipo);
+	cout<<"\nDescricao: ";
+	getline(cin,descricao);
+	cout<<"\nCategoria: ";
+	getline(cin,categoria);
+
+	Aviao tmp( matricula,  nome, peso,  tipo,  descricao,  categoria);
+	try{
+	comp->add_plane(tmp);
+	}
+	catch(aviao_ja_existe & x){
+		cout<<endl<<x<<endl<<endl;
+	}
+}
+void delav(Companhia_aerea* comp){}
+void editav(Companhia_aerea* comp){}
+void addtri(Companhia_aerea* comp){}
+void deltri(Companhia_aerea* comp){}
+void edittri(Companhia_aerea* comp){}
 
 
 void sair(){}
+void sair(Companhia_aerea* comp){}

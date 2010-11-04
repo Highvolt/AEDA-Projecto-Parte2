@@ -37,9 +37,9 @@ int menu_generico(vector<string> &names, vector<funcao_generica> &funcoes){
 
 typedef void (*funcao)(Companhia_aerea*);
 
-bool menu_companhia(vector<string> names, vector<funcao> funcoes,Companhia_aerea* comp){
+int menu_companhia(vector<string> names, vector<funcao> funcoes,Companhia_aerea* comp){
 	if(names.size()!=funcoes.size()){
-		return false;
+		return -1;
 	}
 
 	for(unsigned int n=0;n<names.size();n++){
@@ -58,7 +58,7 @@ bool menu_companhia(vector<string> names, vector<funcao> funcoes,Companhia_aerea
 
 	funcoes[opt-1](comp);
 
-	return true;
+	return opt;
 
 }
 
