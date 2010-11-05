@@ -14,7 +14,14 @@
 #include <iostream>
 #include <fstream>
 
+
+
 using namespace std;
+
+string filenamecomp="companhias.txt";
+string filenameplanos="planos.txt";
+
+
 typedef void (*funcao)(Companhia_aerea*);
 typedef void (*funcao_generica) (void);
 
@@ -35,6 +42,8 @@ void delcomp(Companhia_aerea* comp);
 void gerav(Companhia_aerea* comp);
 void mostra_companhias();
 void ver_planos();
+void save();
+void load();
 
 //*********
 
@@ -43,12 +52,12 @@ Aeroporto aeroporto;
 
 int main(){
 
-	string names_ar[]={"Adiconar companhia:","gerenciar companhia","ver companhias","ver Planos","sair"};
-	funcao_generica func_ar[]={&addcomp,&gerenciar_comp,&mostra_companhias,&ver_planos,&sair};
-	vector<string> names(&names_ar[0],&names_ar[5]);
-	vector<funcao_generica> func(&func_ar[0],&func_ar[5]);
+	string names_ar[]={"Adiconar companhia:","gerenciar companhia","ver companhias","ver Planos","save","load","sair"};
+	funcao_generica func_ar[]={&addcomp,&gerenciar_comp,&mostra_companhias,&ver_planos,&save,&load,&sair};
+	vector<string> names(&names_ar[0],&names_ar[7]);
+	vector<funcao_generica> func(&func_ar[0],&func_ar[7]);
 	int opt=0;
-	while (opt!=5){
+	while (opt!=7){
 		opt=menu_generico(names,func);
 
 	}
@@ -56,11 +65,259 @@ int main(){
 
 	return 0;
 }
+void load(){
+	fstream filecomp;
+	filecomp.open(filenamecomp.c_str(),fstream::in);
+	if(filecomp.is_open()){
+		string tmp;
+		while(getline(filecomp,tmp)){
+			string sigla="",nome="";
+			size_t i=0;
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				sigla+=tmp[i];
+			}
+			i++;
+			for(;i<tmp.size() && tmp[i]!='\n';i++){
+				nome+=tmp[i];
+			}
+			aeroporto.add_companhia(sigla,nome);
+			fstream compav;
+			string filenameav=sigla+"av.txt";
+			compav.open(filenameav.c_str(),fstream::in);
+			if(compav.is_open()){
+				while(getline(compav,tmp)){
+					string matricula="",peso_str="",tipo="",des="",cat="";
+					int peso;
+					nome="";
+					size_t i=0;
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						matricula+=tmp[i];
+					}
+					i++;
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						nome+=tmp[i];
+					}
+					i++;
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						peso_str+=tmp[i];
+					}
+					peso=atoi(peso_str.c_str());
+					i++;
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						tipo+=tmp[i];
+					}
+					i++;
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						des+=tmp[i];
+					}
+					i++;
+
+					for(;i<tmp.size() && tmp[i]!='\n';i++){
+						cat+=tmp[i];
+					}
+					Aviao tmpav(matricula,nome,peso,tipo,des,cat);
+					aeroporto.apt_companhia(aeroporto.getNumeroComp()-1)->add_plane(tmpav);
+				}
+			}
+			fstream comptr;
+			string filenametr=sigla+"tr.txt";
+			comptr.open(filenametr.c_str(),fstream::in);
+			if(comptr.is_open()){
+				while(getline(comptr,tmp)){
+					string numero_str="",ordenado_str="",nome="",cat="";
+					int numero,ordenado;
+					nome="";
+					size_t i=0;
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						numero_str+=tmp[i];
+					}
+					i++;
+					numero=atoi(numero_str.c_str());
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						ordenado_str+=tmp[i];
+					}
+					ordenado=atoi(ordenado_str.c_str());
+
+					i++;
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						cat+=tmp[i];
+					}
+					i++;
+
+
+					for(;i<tmp.size() && tmp[i]!='\n';i++){
+						nome+=tmp[i];
+					}
+					Tripulante tmptr(numero,cat,nome,ordenado);
+					aeroporto.apt_companhia(aeroporto.getNumeroComp()-1)->add_crew(tmptr);
+				}
+			}
+
+		}
+	}
+	filecomp.close();
+
+	//********planos*******
+
+	fstream planos;
+	planos.open(filenameplanos.c_str(),fstream::in);
+	if(planos.is_open()){
+		string tmp;
+		while(getline(planos,tmp)){
+			int anop=-1,mesp=-1,diap=-1,horap=-1,minp=-1;
+			int anoc=-1,mesc=-1,diac=-1,horac=-1,minc=-1;
+			string origem="",destino="";
+			string comp="",av="";
+			int n_pass=-1;
+			size_t i=0;
+			string conv="";
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				conv+=tmp[i];
+			}
+			i++;
+			anop=atoi(conv.c_str());
+			conv="";
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				conv+=tmp[i];
+			}
+			i++;
+			mesp=atoi(conv.c_str());
+			conv="";
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				conv+=tmp[i];
+			}
+			i++;
+			diap=atoi(conv.c_str());
+			conv="";
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				conv+=tmp[i];
+			}
+			i++;
+			horap=atoi(conv.c_str());
+			conv="";
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				conv+=tmp[i];
+			}
+			i++;
+			minp=atoi(conv.c_str());
+			conv="";
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				conv+=tmp[i];
+			}
+			i++;
+			anoc=atoi(conv.c_str());
+			conv="";
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				conv+=tmp[i];
+			}
+			i++;
+			mesc=atoi(conv.c_str());
+			conv="";
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				conv+=tmp[i];
+			}
+			i++;
+			diac=atoi(conv.c_str());
+			conv="";
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				conv+=tmp[i];
+			}
+			i++;
+			horac=atoi(conv.c_str());
+			conv="";
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				conv+=tmp[i];
+			}
+			i++;
+			minc=atoi(conv.c_str());
+
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				comp+=tmp[i];
+			}
+			i++;
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				av+=tmp[i];
+			}
+			i++;
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				conv+=tmp[i];
+			}
+			i++;
+			n_pass=atoi(conv.c_str());
+
+			for(;i<tmp.size() && tmp[i]!='|';i++){
+				origem+=tmp[i];
+			}
+			i++;
+
+			for(;i<tmp.size() && tmp[i]!='\n';i++){
+				destino+=tmp[i];
+			}
+			Plano_de_voo tmppv(horap,minp,diap,mesp,anop,horac,minc,diac,mesc,anoc, aeroporto.apt_companhia(comp),origem, destino, aeroporto.apt_companhia(comp)->aviao_ptr(av),n_pass);
+			if(tmppv.valid()==false){
+				cout<<"Dados invalidos"<<endl;
+			}
+			else{
+				if(aeroporto.add_plano(tmppv)==false){
+					cout<<"Incompativel"<<endl;
+				}else {
+					cout<<"Plano de voo adicionado com sucesso"<<endl;
+				}
+			}
+
+
+
+		}
+
+	}
+
+}
 
 
 void save(){
+	fstream filecomp;
+	filecomp.open(filenamecomp.c_str(),fstream::out |fstream::trunc);
+	if(filecomp.is_open()){
+		for(size_t i=0;i<aeroporto.getNumeroComp();i++){
+			filecomp<<*aeroporto.apt_companhia(i);
+			fstream compav;
+			string filenameav=aeroporto.apt_companhia(i)->getSigla()+"av.txt";
+			compav.open(filenameav.c_str(),fstream::out |fstream::trunc);
+			if(compav.is_open()){
+				for(size_t j=0; j<aeroporto.apt_companhia(i)->getAvioes().size(); j++){
+					compav<<*aeroporto.apt_companhia(i)->aviao_ptr(j);
+				}
+			}
+			compav.close();
+			fstream comptr;
+			string filenametr=aeroporto.apt_companhia(i)->getSigla()+"tr.txt";
+			comptr.open(filenametr.c_str(),fstream::out |fstream::trunc);
+			if(comptr.is_open()){
+				for(size_t j=0; j<aeroporto.apt_companhia(i)->getTripulantes().size(); j++){
+					comptr<<*aeroporto.apt_companhia(i)->tripulante_ptr(j);
+				}
+			}
+			comptr.close();
+		}
+	}
+
+
+	filecomp.close();
+
+	//********planos*******
+
+	fstream planos;
+	planos.open(filenameplanos.c_str(),fstream::out |fstream::trunc);
+	if(planos.is_open()){
+		for(size_t i=0;i<aeroporto.getNumPlanos();i++){
+			planos<<*aeroporto.getPlano(i);
+
+		}
+	}
 
 }
+
+
 
 void ver_planos(){
 	cout<<"Planos de voo"<<endl;

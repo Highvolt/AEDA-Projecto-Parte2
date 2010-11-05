@@ -40,6 +40,13 @@ public:
 	Companhia_aerea* apt_companhia(int i){
 		return &companhias[i];
 	}
+	Companhia_aerea* apt_companhia(string sigla){
+		for(size_t i=0;i<companhias.size();i++){
+			if(companhias[i].getSigla()==sigla){
+				return &companhias[i];
+			}
+		}
+	}
 	int getNumeroComp(){
 		return companhias.size();
 	}
