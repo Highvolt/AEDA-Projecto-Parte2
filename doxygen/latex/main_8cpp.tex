@@ -1,0 +1,296 @@
+\hypertarget{main_8cpp}{
+\section{main.cpp File Reference}
+\label{main_8cpp}\index{main.cpp@{main.cpp}}
+}
+{\ttfamily \#include \char`\"{}Companhia.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Aeroporto.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}misc.h\char`\"{}}\par
+{\ttfamily \#include $<$string$>$}\par
+{\ttfamily \#include $<$vector$>$}\par
+{\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include $<$fstream$>$}\par
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{main_8cpp_aec98a2ce1a299f26f3ff62f39ca87280}{funcao} )(\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$)
+\item 
+typedef void($\ast$ \hyperlink{main_8cpp_abb2a019407097249f373456b6fb54408}{funcao\_\-generica} )(void)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8cpp_a976a430cb3f72537a4d1cca2c84c6e04}{addcomp} ()
+\item 
+void \hyperlink{main_8cpp_a8eeca255c1dfa5f90f8e58d7e9a30e5e}{gerenciar\_\-comp} ()
+\item 
+void \hyperlink{main_8cpp_a26ac37d614dfa527c7b053d7cad26950}{sair} ()
+\item 
+void \hyperlink{main_8cpp_acca33652640f9d2766c38ed752049220}{gerir\_\-comp} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+void \hyperlink{main_8cpp_a8cd022d4f853315a33d6fda5d767a0f2}{sair} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+void \hyperlink{main_8cpp_aa5099690526a9769b79b5ce8e86a10a3}{addav} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+void \hyperlink{main_8cpp_a427e94709fa477ba9e50a9a377b13cac}{delav} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+void \hyperlink{main_8cpp_ab8aa6b2411f258ce03ffa0629646f259}{editav} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+void \hyperlink{main_8cpp_a53a8f61473462ffee954c79805b87c18}{addtri} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+void \hyperlink{main_8cpp_a1ee0a9678811cf69a909663d13bc888a}{deltri} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+void \hyperlink{main_8cpp_a5baf70af1f99498394b84e7f6e723c53}{edittri} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+void \hyperlink{main_8cpp_a0dd87fe28c932c7ba7fa4ffeca7e0996}{delcomp} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+void \hyperlink{main_8cpp_aed7f42ecbe002ad1b8ad62b2f467fede}{gerav} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+void \hyperlink{main_8cpp_a435849b7b79313c09cf8acee629ecd43}{mostra\_\-companhias} ()
+\item 
+void \hyperlink{main_8cpp_aff2905210fa9ff09d756a3fc2da08c35}{ver\_\-planos} ()
+\item 
+void \hyperlink{main_8cpp_aae2c382151ef7c9aa913361172b30db6}{save} ()
+\item 
+void \hyperlink{main_8cpp_a78f61ac2dd03bcba8e09ca20cd7d68e3}{load} ()
+\item 
+int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\item 
+void \hyperlink{main_8cpp_a298e881a5f3727f0defd03bab9a24c28}{ver\_\-av} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+void \hyperlink{main_8cpp_ad5214a93c7bcfb3e7d6e03fd7e7b780a}{ver\_\-tr} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+void \hyperlink{main_8cpp_a175a4cfcdb11daa07f6fe591e08abf02}{planos} (\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp, \hyperlink{class_aviao}{Aviao} $\ast$av)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{main_8cpp_af76461375d6fe5f52f736928d76c54d0}{filenamecomp} = \char`\"{}companhias.txt\char`\"{}
+\item 
+string \hyperlink{main_8cpp_a75fae01097a4701f7f1d6859a6306605}{filenameplanos} = \char`\"{}planos.txt\char`\"{}
+\item 
+\hyperlink{classstd_1_1_aeroporto}{Aeroporto} \hyperlink{main_8cpp_a3efe5262adbbbd26d0bed657361b225e}{aeroporto}
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{main_8cpp_aec98a2ce1a299f26f3ff62f39ca87280}{
+\index{main.cpp@{main.cpp}!funcao@{funcao}}
+\index{funcao@{funcao}!main.cpp@{main.cpp}}
+\subsubsection[{funcao}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf funcao})({\bf Companhia\_\-aerea} $\ast$)}}
+\label{main_8cpp_aec98a2ce1a299f26f3ff62f39ca87280}
+\hypertarget{main_8cpp_abb2a019407097249f373456b6fb54408}{
+\index{main.cpp@{main.cpp}!funcao\_\-generica@{funcao\_\-generica}}
+\index{funcao\_\-generica@{funcao\_\-generica}!main.cpp@{main.cpp}}
+\subsubsection[{funcao\_\-generica}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf funcao\_\-generica})(void)}}
+\label{main_8cpp_abb2a019407097249f373456b6fb54408}
+
+
+\subsection{Function Documentation}
+\hypertarget{main_8cpp_aa5099690526a9769b79b5ce8e86a10a3}{
+\index{main.cpp@{main.cpp}!addav@{addav}}
+\index{addav@{addav}!main.cpp@{main.cpp}}
+\subsubsection[{addav}]{\setlength{\rightskip}{0pt plus 5cm}void addav (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_aa5099690526a9769b79b5ce8e86a10a3}
+\hypertarget{main_8cpp_a976a430cb3f72537a4d1cca2c84c6e04}{
+\index{main.cpp@{main.cpp}!addcomp@{addcomp}}
+\index{addcomp@{addcomp}!main.cpp@{main.cpp}}
+\subsubsection[{addcomp}]{\setlength{\rightskip}{0pt plus 5cm}void addcomp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a976a430cb3f72537a4d1cca2c84c6e04}
+\hypertarget{main_8cpp_a53a8f61473462ffee954c79805b87c18}{
+\index{main.cpp@{main.cpp}!addtri@{addtri}}
+\index{addtri@{addtri}!main.cpp@{main.cpp}}
+\subsubsection[{addtri}]{\setlength{\rightskip}{0pt plus 5cm}void addtri (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a53a8f61473462ffee954c79805b87c18}
+\hypertarget{main_8cpp_a427e94709fa477ba9e50a9a377b13cac}{
+\index{main.cpp@{main.cpp}!delav@{delav}}
+\index{delav@{delav}!main.cpp@{main.cpp}}
+\subsubsection[{delav}]{\setlength{\rightskip}{0pt plus 5cm}void delav (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a427e94709fa477ba9e50a9a377b13cac}
+\hypertarget{main_8cpp_a0dd87fe28c932c7ba7fa4ffeca7e0996}{
+\index{main.cpp@{main.cpp}!delcomp@{delcomp}}
+\index{delcomp@{delcomp}!main.cpp@{main.cpp}}
+\subsubsection[{delcomp}]{\setlength{\rightskip}{0pt plus 5cm}void delcomp (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a0dd87fe28c932c7ba7fa4ffeca7e0996}
+\hypertarget{main_8cpp_a1ee0a9678811cf69a909663d13bc888a}{
+\index{main.cpp@{main.cpp}!deltri@{deltri}}
+\index{deltri@{deltri}!main.cpp@{main.cpp}}
+\subsubsection[{deltri}]{\setlength{\rightskip}{0pt plus 5cm}void deltri (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a1ee0a9678811cf69a909663d13bc888a}
+\hypertarget{main_8cpp_ab8aa6b2411f258ce03ffa0629646f259}{
+\index{main.cpp@{main.cpp}!editav@{editav}}
+\index{editav@{editav}!main.cpp@{main.cpp}}
+\subsubsection[{editav}]{\setlength{\rightskip}{0pt plus 5cm}void editav (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_ab8aa6b2411f258ce03ffa0629646f259}
+\hypertarget{main_8cpp_a5baf70af1f99498394b84e7f6e723c53}{
+\index{main.cpp@{main.cpp}!edittri@{edittri}}
+\index{edittri@{edittri}!main.cpp@{main.cpp}}
+\subsubsection[{edittri}]{\setlength{\rightskip}{0pt plus 5cm}void edittri (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a5baf70af1f99498394b84e7f6e723c53}
+\hypertarget{main_8cpp_aed7f42ecbe002ad1b8ad62b2f467fede}{
+\index{main.cpp@{main.cpp}!gerav@{gerav}}
+\index{gerav@{gerav}!main.cpp@{main.cpp}}
+\subsubsection[{gerav}]{\setlength{\rightskip}{0pt plus 5cm}void gerav (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_aed7f42ecbe002ad1b8ad62b2f467fede}
+\hypertarget{main_8cpp_a8eeca255c1dfa5f90f8e58d7e9a30e5e}{
+\index{main.cpp@{main.cpp}!gerenciar\_\-comp@{gerenciar\_\-comp}}
+\index{gerenciar\_\-comp@{gerenciar\_\-comp}!main.cpp@{main.cpp}}
+\subsubsection[{gerenciar\_\-comp}]{\setlength{\rightskip}{0pt plus 5cm}void gerenciar\_\-comp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a8eeca255c1dfa5f90f8e58d7e9a30e5e}
+\hypertarget{main_8cpp_acca33652640f9d2766c38ed752049220}{
+\index{main.cpp@{main.cpp}!gerir\_\-comp@{gerir\_\-comp}}
+\index{gerir\_\-comp@{gerir\_\-comp}!main.cpp@{main.cpp}}
+\subsubsection[{gerir\_\-comp}]{\setlength{\rightskip}{0pt plus 5cm}void gerir\_\-comp (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_acca33652640f9d2766c38ed752049220}
+\hypertarget{main_8cpp_a78f61ac2dd03bcba8e09ca20cd7d68e3}{
+\index{main.cpp@{main.cpp}!load@{load}}
+\index{load@{load}!main.cpp@{main.cpp}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}void load (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a78f61ac2dd03bcba8e09ca20cd7d68e3}
+\hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+\hypertarget{main_8cpp_a435849b7b79313c09cf8acee629ecd43}{
+\index{main.cpp@{main.cpp}!mostra\_\-companhias@{mostra\_\-companhias}}
+\index{mostra\_\-companhias@{mostra\_\-companhias}!main.cpp@{main.cpp}}
+\subsubsection[{mostra\_\-companhias}]{\setlength{\rightskip}{0pt plus 5cm}void mostra\_\-companhias (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a435849b7b79313c09cf8acee629ecd43}
+\hypertarget{main_8cpp_a175a4cfcdb11daa07f6fe591e08abf02}{
+\index{main.cpp@{main.cpp}!planos@{planos}}
+\index{planos@{planos}!main.cpp@{main.cpp}}
+\subsubsection[{planos}]{\setlength{\rightskip}{0pt plus 5cm}void planos (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp, }
+\item[{{\bf Aviao} $\ast$}]{ av}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a175a4cfcdb11daa07f6fe591e08abf02}
+\hypertarget{main_8cpp_a26ac37d614dfa527c7b053d7cad26950}{
+\index{main.cpp@{main.cpp}!sair@{sair}}
+\index{sair@{sair}!main.cpp@{main.cpp}}
+\subsubsection[{sair}]{\setlength{\rightskip}{0pt plus 5cm}void sair (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a26ac37d614dfa527c7b053d7cad26950}
+\hypertarget{main_8cpp_a8cd022d4f853315a33d6fda5d767a0f2}{
+\index{main.cpp@{main.cpp}!sair@{sair}}
+\index{sair@{sair}!main.cpp@{main.cpp}}
+\subsubsection[{sair}]{\setlength{\rightskip}{0pt plus 5cm}void sair (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a8cd022d4f853315a33d6fda5d767a0f2}
+\hypertarget{main_8cpp_aae2c382151ef7c9aa913361172b30db6}{
+\index{main.cpp@{main.cpp}!save@{save}}
+\index{save@{save}!main.cpp@{main.cpp}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}void save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_aae2c382151ef7c9aa913361172b30db6}
+\hypertarget{main_8cpp_a298e881a5f3727f0defd03bab9a24c28}{
+\index{main.cpp@{main.cpp}!ver\_\-av@{ver\_\-av}}
+\index{ver\_\-av@{ver\_\-av}!main.cpp@{main.cpp}}
+\subsubsection[{ver\_\-av}]{\setlength{\rightskip}{0pt plus 5cm}void ver\_\-av (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_a298e881a5f3727f0defd03bab9a24c28}
+\hypertarget{main_8cpp_aff2905210fa9ff09d756a3fc2da08c35}{
+\index{main.cpp@{main.cpp}!ver\_\-planos@{ver\_\-planos}}
+\index{ver\_\-planos@{ver\_\-planos}!main.cpp@{main.cpp}}
+\subsubsection[{ver\_\-planos}]{\setlength{\rightskip}{0pt plus 5cm}void ver\_\-planos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_aff2905210fa9ff09d756a3fc2da08c35}
+\hypertarget{main_8cpp_ad5214a93c7bcfb3e7d6e03fd7e7b780a}{
+\index{main.cpp@{main.cpp}!ver\_\-tr@{ver\_\-tr}}
+\index{ver\_\-tr@{ver\_\-tr}!main.cpp@{main.cpp}}
+\subsubsection[{ver\_\-tr}]{\setlength{\rightskip}{0pt plus 5cm}void ver\_\-tr (
+\begin{DoxyParamCaption}
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{main_8cpp_ad5214a93c7bcfb3e7d6e03fd7e7b780a}
+
+
+\subsection{Variable Documentation}
+\hypertarget{main_8cpp_a3efe5262adbbbd26d0bed657361b225e}{
+\index{main.cpp@{main.cpp}!aeroporto@{aeroporto}}
+\index{aeroporto@{aeroporto}!main.cpp@{main.cpp}}
+\subsubsection[{aeroporto}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Aeroporto} {\bf aeroporto}}}
+\label{main_8cpp_a3efe5262adbbbd26d0bed657361b225e}
+\hypertarget{main_8cpp_af76461375d6fe5f52f736928d76c54d0}{
+\index{main.cpp@{main.cpp}!filenamecomp@{filenamecomp}}
+\index{filenamecomp@{filenamecomp}!main.cpp@{main.cpp}}
+\subsubsection[{filenamecomp}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf filenamecomp} = \char`\"{}companhias.txt\char`\"{}}}
+\label{main_8cpp_af76461375d6fe5f52f736928d76c54d0}
+\hypertarget{main_8cpp_a75fae01097a4701f7f1d6859a6306605}{
+\index{main.cpp@{main.cpp}!filenameplanos@{filenameplanos}}
+\index{filenameplanos@{filenameplanos}!main.cpp@{main.cpp}}
+\subsubsection[{filenameplanos}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf filenameplanos} = \char`\"{}planos.txt\char`\"{}}}
+\label{main_8cpp_a75fae01097a4701f7f1d6859a6306605}

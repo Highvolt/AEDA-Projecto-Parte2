@@ -1,0 +1,82 @@
+\hypertarget{misc_8h}{
+\section{misc.h File Reference}
+\label{misc_8h}\index{misc.h@{misc.h}}
+}
+{\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include $<$vector$>$}\par
+{\ttfamily \#include $<$string$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}Companhia.h\char`\"{}}\par
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{misc_8h_abb2a019407097249f373456b6fb54408}{funcao\_\-generica} )(void)
+\item 
+typedef void($\ast$ \hyperlink{misc_8h_aec98a2ce1a299f26f3ff62f39ca87280}{funcao} )(\hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\int \hyperlink{misc_8h_a7b2428145869a08ae89d96755fe288a2}{menu} (vector$<$ T $>$ dados)
+\item 
+int \hyperlink{misc_8h_ae16ef19962e815d078da8702c7063c8e}{menu\_\-generico} (vector$<$ string $>$ \&names, vector$<$ \hyperlink{misc_8h_abb2a019407097249f373456b6fb54408}{funcao\_\-generica} $>$ \&funcoes)
+\item 
+int \hyperlink{misc_8h_a0bf2030d5b6cd86ed393b255e2914563}{menu\_\-companhia} (vector$<$ string $>$ names, vector$<$ \hyperlink{misc_8h_aec98a2ce1a299f26f3ff62f39ca87280}{funcao} $>$ funcoes, \hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$comp)
+\item 
+int \hyperlink{misc_8h_abf4982253056ad933be58b9d036c1846}{menu\_\-de\_\-companhias} (vector$<$ \hyperlink{class_companhia__aerea}{Companhia\_\-aerea} $\ast$ $>$ comps)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{misc_8h_aec98a2ce1a299f26f3ff62f39ca87280}{
+\index{misc.h@{misc.h}!funcao@{funcao}}
+\index{funcao@{funcao}!misc.h@{misc.h}}
+\subsubsection[{funcao}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf funcao})({\bf Companhia\_\-aerea} $\ast$)}}
+\label{misc_8h_aec98a2ce1a299f26f3ff62f39ca87280}
+\hypertarget{misc_8h_abb2a019407097249f373456b6fb54408}{
+\index{misc.h@{misc.h}!funcao\_\-generica@{funcao\_\-generica}}
+\index{funcao\_\-generica@{funcao\_\-generica}!misc.h@{misc.h}}
+\subsubsection[{funcao\_\-generica}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf funcao\_\-generica})(void)}}
+\label{misc_8h_abb2a019407097249f373456b6fb54408}
+
+
+\subsection{Function Documentation}
+\hypertarget{misc_8h_a7b2428145869a08ae89d96755fe288a2}{
+\index{misc.h@{misc.h}!menu@{menu}}
+\index{menu@{menu}!misc.h@{misc.h}}
+\subsubsection[{menu}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int menu (
+\begin{DoxyParamCaption}
+\item[{vector$<$ T $>$}]{ dados}
+\end{DoxyParamCaption}
+)}}
+\label{misc_8h_a7b2428145869a08ae89d96755fe288a2}
+\hypertarget{misc_8h_a0bf2030d5b6cd86ed393b255e2914563}{
+\index{misc.h@{misc.h}!menu\_\-companhia@{menu\_\-companhia}}
+\index{menu\_\-companhia@{menu\_\-companhia}!misc.h@{misc.h}}
+\subsubsection[{menu\_\-companhia}]{\setlength{\rightskip}{0pt plus 5cm}int menu\_\-companhia (
+\begin{DoxyParamCaption}
+\item[{vector$<$ string $>$}]{ names, }
+\item[{vector$<$ {\bf funcao} $>$}]{ funcoes, }
+\item[{{\bf Companhia\_\-aerea} $\ast$}]{ comp}
+\end{DoxyParamCaption}
+)}}
+\label{misc_8h_a0bf2030d5b6cd86ed393b255e2914563}
+\hypertarget{misc_8h_abf4982253056ad933be58b9d036c1846}{
+\index{misc.h@{misc.h}!menu\_\-de\_\-companhias@{menu\_\-de\_\-companhias}}
+\index{menu\_\-de\_\-companhias@{menu\_\-de\_\-companhias}!misc.h@{misc.h}}
+\subsubsection[{menu\_\-de\_\-companhias}]{\setlength{\rightskip}{0pt plus 5cm}int menu\_\-de\_\-companhias (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Companhia\_\-aerea} $\ast$ $>$}]{ comps}
+\end{DoxyParamCaption}
+)}}
+\label{misc_8h_abf4982253056ad933be58b9d036c1846}
+\hypertarget{misc_8h_ae16ef19962e815d078da8702c7063c8e}{
+\index{misc.h@{misc.h}!menu\_\-generico@{menu\_\-generico}}
+\index{menu\_\-generico@{menu\_\-generico}!misc.h@{misc.h}}
+\subsubsection[{menu\_\-generico}]{\setlength{\rightskip}{0pt plus 5cm}int menu\_\-generico (
+\begin{DoxyParamCaption}
+\item[{vector$<$ string $>$ \&}]{ names, }
+\item[{vector$<$ {\bf funcao\_\-generica} $>$ \&}]{ funcoes}
+\end{DoxyParamCaption}
+)}}
+\label{misc_8h_ae16ef19962e815d078da8702c7063c8e}
