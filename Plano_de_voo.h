@@ -55,7 +55,13 @@ public:
 	 */
 	Plano_de_voo(int hora_partida,int min_partida, int dia_partida, int mes_partida, int ano_partida, int hora_chegada,int min_chegada, int dia_chegada, int mes_chegada, int ano_chegada, Companhia_aerea* companhia, string origem, string destino, Aviao* aviao, int n_passageiros);
 
-
+	/*
+	 * Allows the user to see on the screen the information about the flight plan
+     * @name <<
+     * @param ostream &out
+     * @param Plano_de_voo x
+     * @return an ostream with the intel of the flight plan
+	 */
 	friend ostream & operator<<(ostream &out, Plano_de_voo x){
 		out<<x.partida.ano<<'|'<<x.partida.mes<<'|'<<x.partida.dia<<'|'<<x.partida.hora<<'|'<<x.partida.min<<'|'
 				<<x.chegada.ano<<'|'<<x.chegada.mes<<'|'<<x.chegada.dia<<'|'<<x.chegada.hora<<'|'<<x.chegada.min<<'|'<<x.companhia->getSigla()<<'|'<<x.aviao->getMatricula()<<'|'<<x.n_passageiros<<'|'<<x.origem<<'|'<<x.destino<<endl;
@@ -170,7 +176,13 @@ public:
 	 * @param int n_passageiros
 	 */
 	void setPassageiros(int n_passageiros);
-
+	/*
+	 * Comparison between a flight plan A with another one named B
+	 * @name Compatible
+	 * @param Plano_de_voo &a
+	 * @param Plana_de_voo &b
+	 * @return 0 if the flight plans put themselfs upon each other and 1 if they don't
+	 */
 	friend bool Compatible(Plano_de_voo &a, Plano_de_voo & b){
 		if(*(a.getCompanhia())==*(b.getCompanhia()) && *(a.getAviao())==*(b.getAviao())){
 			if((b.partida.ano>=a.partida.ano && b.chegada.ano<=a.chegada.ano)){

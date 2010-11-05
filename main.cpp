@@ -337,14 +337,15 @@ void mostra_companhias(){
 void addcomp(){
 	cout<<"Adicao de companhia"<<endl;
 	string sigla,name;
+	cout<<"Sigla: ";
 	getline(cin,sigla);
+	cout<<"Nome: ";
 	getline(cin,name);
 	try{
 		aeroporto.add_companhia(sigla,name);
 	}
 	catch(Companhia_ja_existe & x){
 		cout<<x<<endl;
-
 	}
 	cout<<"Companhia Aerea criada com sucesso"<<endl<<endl;
 
