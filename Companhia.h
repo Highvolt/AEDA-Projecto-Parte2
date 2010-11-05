@@ -27,6 +27,11 @@ private:
 public:
 	Companhia_aerea(string & sigla, string & nme_companhia);
 	int add_plane(Aviao aviao);
+	Aviao *aviao_ptr(int i){
+		if(i>0 &&i<avioes.size()){
+			return &avioes[i];
+		}
+	}
 	int delete_plane(Aviao aviao);
 	int delete_plane(int i);
 	int add_crew(Tripulante tripulante);
@@ -44,6 +49,10 @@ public:
     bool operator==(Companhia_aerea & a){
     	return this->sigla==a.getSigla();
     }
+    friend ostream & operator<<(ostream & out, Companhia_aerea x){
+    	out<<x.sigla<<'|'<<x.nme_companhia<<endl;
+    	return out;
+    }
 
 
 };
@@ -57,6 +66,7 @@ private:
 	int salario_hora;
 	string categoria;
 	string nome;
+
 
 public:
 	Tripulante(int numero, string categoria, string nome, int salario_hora);
@@ -72,7 +82,10 @@ public:
 	bool operator==(const Tripulante &b){
 		return this->numero==b.numero;
 	}
-
+    friend ostream & operator<<(ostream & out, Tripulante x){
+    	out<<x.numero<<'|'<<x.salario_hora<<'|'<<x.categoria<<'|'<<x.nome<<endl;
+    	return out;
+    }
 };
 
 class Tipo_de_aviao{
@@ -81,6 +94,13 @@ private:
 	string descricao;
 	string categoria;
 public:
+
+	Tipo_de_aviao(){
+		this->tipo="";
+			this->descricao="";
+			this->categoria="";
+	}
+
 	Tipo_de_aviao(string tipo, string descricao, string categoria);
     string getCategoria() const
     {
@@ -114,14 +134,19 @@ public:
 
 };
 
-class Aviao: public Tipo_de_aviao{
+class Aviao:public Tipo_de_aviao{
 private:
 	string matricula;
 	string nome;
 	int peso;
 
+
 public:
 	Aviao(string matricula, string nome, int peso, string tipo, string descricao, string categoria);
+    friend ostream & operator<<(ostream & out, Aviao x){
+    	out<<x.matricula<<'|'<<x.nome<<'|'<<x.peso<<'|'<<x.getTipo()<<'|'<<x.getDescricao()<<'|'<<x.getCategoria()<<endl;
+    	return out;
+    }
     string getMatricula() const
     {
         return matricula;
@@ -171,7 +196,31 @@ public:
 	}
 };
 
+class aviao_nao_existe{
+private:
+	Aviao* existente;
+public:
+	aviao_nao_existe(Aviao* aviao){
+		existente=aviao;
+	}
+	friend ostream & operator<<(ostream & out, aviao_nao_existe Dados){
+		out<<"O Aviao com a matricula "<<Dados.existente->getMatricula()<<" nao existe"<<endl;
+		return out;
+	}
+};
 
+class trip_ja_existe{
+private:
+	Tripulante* existente;
+public:
+	trip_ja_existe(Tripulante* aviao){
+		existente=aviao;
+	}
+	friend ostream & operator<<(ostream & out, trip_ja_existe Dados){
+		out<<"O tripulante numero"<<Dados.existente->getNumero()<<" ja existe"<<endl;
+		return out;
+	}
+};
 
 
 #endif

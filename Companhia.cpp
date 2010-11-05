@@ -93,7 +93,7 @@ int Companhia_aerea::delete_plane(Aviao aviao){
 			return 0;
 		}
 	}
-	//adicionar gest‹o de erros
+	throw aviao_nao_existe(&aviao);
 	return -1;
 }
 
@@ -108,14 +108,14 @@ int Companhia_aerea::delete_plane(int i){ //confirmar resultado
 		return 0;
 	}
 
-	//adicionar gest‹o de erros
+
 	return -1;
 }
 
 int Companhia_aerea::add_crew(Tripulante tripulante){
 	for(vector<Tripulante>::iterator it=tripulantes.begin(); it<tripulantes.end(); it++){
 		if(*it==tripulante){
-			//adicionar gest‹o de erros
+			throw trip_ja_existe(&tripulante);
 			return -1;
 		}
 	}

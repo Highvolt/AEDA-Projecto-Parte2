@@ -34,6 +34,9 @@ public:
 	Companhia_aerea* apt_companhia(int i){
 		return &companhias[i];
 	}
+	int getNumeroComp(){
+		return companhias.size();
+	}
 };
 
 

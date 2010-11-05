@@ -7,6 +7,31 @@
 
 using namespace std;
 
+template<class T>
+int menu(vector<T> dados){
+	if(dados.size()==0){
+		return -1;
+	}
+	for(unsigned int n=0;n<dados.size();n++){
+		cout<<n+1<<" - "<<dados[n]<<endl;
+	}
+
+	string opt_temp="";
+	unsigned int opt=dados.size()+1;
+
+	while(opt>dados.size() || opt<=0){
+		cout<<"\n\n \t opcao"<<"[1-"<<dados.size()<<"] :"<<endl;
+		getline(cin,opt_temp);
+		opt=atoi(opt_temp.c_str());
+	}
+
+
+
+	return opt-1;
+
+}
+
+
 typedef void (*funcao_generica) (void);
 
 int menu_generico(vector<string> &names, vector<funcao_generica> &funcoes){
