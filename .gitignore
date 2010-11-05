@@ -1,1 +1,5 @@
 bin
+/doxygen
+/html
+/latex
+/AEDA projecto1.doxyfile
