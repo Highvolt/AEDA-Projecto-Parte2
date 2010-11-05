@@ -361,14 +361,28 @@ void gerenciar_comp(){
 	gerir_comp(aeroporto.apt_companhia(menu_generico(nomes,funcoes)-1));
 }
 
+void ver_av(Companhia_aerea* comp){
+	cout<<"Avioes::::\n"<<"<matricula>|<nome>|<Peso>|<Tipo>|<Descricao>|<categoria>"<<endl;
+	for(size_t i=0;i<comp->getAvioes().size(); i++){
+		cout<<*comp->aviao_ptr(i)<<endl;
+	}
+}
+
+void ver_tr(Companhia_aerea* comp){
+	cout<<"Tripulantes::::\n"<<"<numero>|<salario_hora>|<categoria>|<Nome>"<<endl;
+	for(size_t i=0;i<comp->getTripulantes().size(); i++){
+		cout<<*comp->tripulante_ptr(i)<<endl;
+	}
+}
+
 void gerir_comp(Companhia_aerea* comp){
 	cout<<*comp<<endl;
-	string names_ar[]={"Adiconar aviao:","Apagar aviao:","editar aviao","Adicionar plano de voo", "Adicionar Tripulante", "Apagar tripulante","editar tripulante","apagar companhia","sair"};
-	funcao func_ar[]={&addav,&delav,&editav,&gerav,&addtri,&deltri,&edittri,&delcomp,&sair};
-	vector<string> names(&names_ar[0],&names_ar[9]);
-	vector<funcao> func(&func_ar[0],&func_ar[9]);
+	string names_ar[]={"ver avioes","Adiconar aviao:","Apagar aviao:","editar aviao","Adicionar plano de voo", "Ver Tripulantes","Adicionar Tripulante", "Apagar tripulante","editar tripulante","apagar companhia","sair"};
+	funcao func_ar[]={&ver_av,&addav,&delav,&editav,&gerav,&ver_tr,&addtri,&deltri,&edittri,&delcomp,&sair};
+	vector<string> names(&names_ar[0],&names_ar[11]);
+	vector<funcao> func(&func_ar[0],&func_ar[11]);
 	int opt=0;
-	while(opt!=9 && opt!=8){
+	while(opt!=11 && opt!=10){
 		opt=menu_companhia(names,func,comp);
 	}
 
@@ -515,6 +529,9 @@ void delav(Companhia_aerea* comp){
 	}
 }
 void editav(Companhia_aerea* comp){
+	cout<<"***Edicao de avioes todos os dados anteriores s‹o perdidos..."<<endl<<endl;
+	delav(comp);
+	addav(comp);
 
 }
 void addtri(Companhia_aerea* comp){
@@ -553,7 +570,11 @@ void deltri(Companhia_aerea* comp){
 	}
 
 }
-void edittri(Companhia_aerea* comp){}
+void edittri(Companhia_aerea* comp){
+	cout<<"***Edicao de tripulantes todos os dados anteriores s‹o perdidos..."<<endl<<endl;
+	deltri(comp);
+	addtri(comp);
+}
 
 
 void sair(){}
