@@ -28,7 +28,7 @@ public:
 	Companhia_aerea(string & sigla, string & nme_companhia);
 	int add_plane(Aviao aviao);
 	Aviao *aviao_ptr(int i){
-		if(i>0 &&i<avioes.size()){
+		if(i>=0 &&i<avioes.size()){
 			return &avioes[i];
 		}
 	}
@@ -37,6 +37,7 @@ public:
 	int add_crew(Tripulante tripulante);
 	int delete_crew(Tripulante tripulante);
 	int delete_crew(int i);
+	vector<string> getPlanesnames();
     vector<Aviao> getAvioes() const;
     string getSigla() const;
     vector<Tripulante> getTripulantes() const;

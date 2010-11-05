@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 typedef void (*funcao)(Companhia_aerea*);
@@ -30,7 +31,10 @@ void editav(Companhia_aerea* comp);
 void addtri(Companhia_aerea* comp);
 void deltri(Companhia_aerea* comp);
 void edittri(Companhia_aerea* comp);
+void delcomp(Companhia_aerea* comp);
+void gerav(Companhia_aerea* comp);
 void mostra_companhias();
+void ver_planos();
 
 //*********
 
@@ -39,18 +43,30 @@ Aeroporto aeroporto;
 
 int main(){
 
-	string names_ar[]={"Adiconar companhia:","gerenciar companhia","ver companhias","sair"};
-	funcao_generica func_ar[]={&addcomp,&gerenciar_comp,&mostra_companhias,&sair};
-	vector<string> names(&names_ar[0],&names_ar[4]);
-	vector<funcao_generica> func(&func_ar[0],&func_ar[4]);
+	string names_ar[]={"Adiconar companhia:","gerenciar companhia","ver companhias","ver Planos","sair"};
+	funcao_generica func_ar[]={&addcomp,&gerenciar_comp,&mostra_companhias,&ver_planos,&sair};
+	vector<string> names(&names_ar[0],&names_ar[5]);
+	vector<funcao_generica> func(&func_ar[0],&func_ar[5]);
 	int opt=0;
-	while (opt!=4){
+	while (opt!=5){
 		opt=menu_generico(names,func);
 
 	}
 
 
 	return 0;
+}
+
+
+void save(){
+
+}
+
+void ver_planos(){
+	cout<<"Planos de voo"<<endl;
+	for(size_t i=0; i<aeroporto.getNumPlanos(); i++){
+		cout<<*(aeroporto.getPlano(i))<<endl;
+	}
 }
 
 void mostra_companhias(){
@@ -90,16 +106,118 @@ void gerenciar_comp(){
 
 void gerir_comp(Companhia_aerea* comp){
 	cout<<*comp<<endl;
-	string names_ar[]={"Adiconar aviao:","Apagar aviao:","editar aviao", "Adicionar Tripulante", "Apagar tripulante","editar tripulante","sair"};
-	funcao func_ar[]={&addav,&delav,&editav,&addtri,&deltri,&edittri,&sair};
-	vector<string> names(&names_ar[0],&names_ar[7]);
-	vector<funcao> func(&func_ar[0],&func_ar[7]);
+	string names_ar[]={"Adiconar aviao:","Apagar aviao:","editar aviao","Adicionar plano de voo", "Adicionar Tripulante", "Apagar tripulante","editar tripulante","apagar companhia","sair"};
+	funcao func_ar[]={&addav,&delav,&editav,&gerav,&addtri,&deltri,&edittri,&delcomp,&sair};
+	vector<string> names(&names_ar[0],&names_ar[9]);
+	vector<funcao> func(&func_ar[0],&func_ar[9]);
 	int opt=0;
-	while(opt!=7){
+	while(opt!=9 && opt!=8){
 		opt=menu_companhia(names,func,comp);
 	}
 
 
+}
+
+void planos(Companhia_aerea* comp, Aviao* av){
+
+	int ano=-1,mes=-1,dia=-1,hora=-1,min=-1;
+	cout<<"****Partida***";
+	cout<<"\nAno: ";
+	string pesotmp;
+	while(ano<0){
+		getline(cin, pesotmp);
+		ano=atoi(pesotmp.c_str());
+	}
+	cout<<"\nmes: ";
+	while(mes<=0 || mes>12){
+		getline(cin, pesotmp);
+		mes=atoi(pesotmp.c_str());
+	}
+	cout<<"\ndia: ";
+	while(dia<=0 || dia>31 ){
+		getline(cin, pesotmp);
+		dia=atoi(pesotmp.c_str());
+	}
+	cout<<"\nhora: ";
+	while(hora<0 || hora>=24){
+		getline(cin, pesotmp);
+		hora=atoi(pesotmp.c_str());
+	}
+	cout<< "\nmin: ";
+	while(min<0 || min>=60){
+		getline(cin, pesotmp);
+		min=atoi(pesotmp.c_str());
+	}
+
+	int ano_c=-1,mes_c=-1,dia_c=-1,hora_c=-1,min_c=-1;
+	cout<<"****Chegada***";
+	cout<<"\nano_c: ";
+
+	while(ano_c<0){
+		getline(cin, pesotmp);
+		ano_c=atoi(pesotmp.c_str());
+	}
+	cout<<"\nmes_c: ";
+	while(mes_c<=0 || mes_c>12){
+		getline(cin, pesotmp);
+		mes_c=atoi(pesotmp.c_str());
+	}
+	cout<<"\ndia_c: ";
+	while(dia_c<=0 || dia_c>31 ){
+		getline(cin, pesotmp);
+		dia_c=atoi(pesotmp.c_str());
+	}
+	cout<<"\nhora_c: ";
+	while(hora_c<0 || hora_c>=24){
+		getline(cin, pesotmp);
+		hora_c=atoi(pesotmp.c_str());
+	}
+	cout<< "\nmin_c: ";
+	while(min_c<0 || min_c>=60){
+		getline(cin, pesotmp);
+		min_c=atoi(pesotmp.c_str());
+	}
+
+	string origem,destino;
+	cout<<"\nOrigem: ";
+	getline(cin,origem);
+	cout<<"\nDestino: ";
+	getline(cin,destino);
+	cout<< "\npassageiros: ";
+	int np=-1;
+	while(np<=0){
+		getline(cin, pesotmp);
+		np=atoi(pesotmp.c_str());
+	}
+
+	Plano_de_voo tmp(hora,min,dia,mes,ano,hora_c,min_c,dia_c,mes_c,ano_c, comp,origem, destino, av,np);
+	if(tmp.valid()==false){
+		cout<<"Dados invalidos"<<endl;
+	}
+	else{
+		if(aeroporto.add_plano(tmp)==false){
+			cout<<"Incompativel"<<endl;
+		}else {
+			cout<<"Plano de voo adicionado com sucesso"<<endl;
+		}
+	}
+
+
+
+}
+
+void gerav(Companhia_aerea* comp){
+	int opt=menu(comp->getAvioes());
+	planos(comp,comp->aviao_ptr(opt));
+}
+
+void delcomp(Companhia_aerea* comp){
+	if(aeroporto.del_companhia(comp)){
+		cout<<"Companhia Apagada"<<endl;
+	}
+	else{
+		cout<<"Companhia n‹o existe"<<endl;
+	}
 }
 
 void addav(Companhia_aerea* comp){
@@ -157,8 +275,8 @@ void addtri(Companhia_aerea* comp){
 	getline(cin, nome);
 	cout<<"\nSalario por hora: ";
 	while(salario_hora<=0){
-			getline(cin, pesotmp);
-			salario_hora=atoi(pesotmp.c_str());
+		getline(cin, pesotmp);
+		salario_hora=atoi(pesotmp.c_str());
 	}
 
 	Tripulante tmp(numero,categoria, nome,salario_hora);

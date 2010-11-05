@@ -75,6 +75,14 @@ Companhia_aerea::Companhia_aerea(string &sigla, string &nme_companhia){
 	this->nme_companhia=nme_companhia;
 }
 
+vector<string> Companhia_aerea::getPlanesnames(){
+	vector<string> names;
+	for(size_t i=0; i<avioes.size();i++){
+		names.push_back(avioes[i].getNome());
+	}
+	return names;
+}
+
 int Companhia_aerea::add_plane(Aviao aviao){
 	for(vector<Aviao>::iterator it=avioes.begin(); it<avioes.end(); it++){
 		if(*it==aviao){

@@ -10,7 +10,7 @@ using namespace std;
 
 
 void set_horas(int hora,int min, int dia, int mes, int ano, horas_data* dest){
-	if(hora>=0 && min>=0 && hora<24 && min>60 &&mes>0 && mes<=12 && ano>0){
+	if(hora>=0 && min>=0 && hora<24 && min<60 &&mes>0 && mes<=12 && ano>0){
 		dest->hora=hora;
 		dest->min=min;
 		switch(mes){
@@ -38,15 +38,20 @@ void set_horas(int hora,int min, int dia, int mes, int ano, horas_data* dest){
 		dest->mes=mes;
 		dest->ano=ano;
 	}
+	else{
+		dest->hora=dest->mes=dest->min=dest->ano=dest->dia=-1;
+	}
 }
 
-Plano_de_voo::Plano_de_voo(int hora_partida,int min_partida, int dia_partida, int mes_partida, int ano_partida, int hora_chegada,int min_chegada, int dia_chegada, int mes_chegada, int ano_chegada, Companhia_aerea* companhia, string origem, string destino, Aviao* aviao){
+Plano_de_voo::Plano_de_voo(int hora_partida,int min_partida, int dia_partida, int mes_partida, int ano_partida, int hora_chegada,int min_chegada, int dia_chegada, int mes_chegada, int ano_chegada, Companhia_aerea* companhia, string origem, string destino, Aviao* aviao,int n_passageiros){
 	set_horas(hora_partida,min_partida,dia_partida,mes_partida,ano_partida,&partida);
 	set_horas(hora_chegada,min_chegada,dia_chegada,mes_chegada,ano_chegada,&chegada);
 	this->companhia=companhia;
 	this->origem=origem;
 	this->destino=destino;
 	this->aviao=aviao;
+
+	this->n_passageiros=n_passageiros;
 }
 
 Aviao *Plano_de_voo::getAviao() const
@@ -135,7 +140,6 @@ bool Plano_de_voo::valid(){
 	}
 	return false;
 }
-
 
 
 

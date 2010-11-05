@@ -22,9 +22,15 @@ private:
 public:
 	Aeroporto();
 	virtual ~Aeroporto();
-	bool add_plano();
+
 	void add_companhia(string & sigla, string & nme_companhia);
 	vector<string> nomes_companhias();
+	int getNumPlanos(){
+		return this->planos.size();
+	}
+	Plano_de_voo* getPlano(int i){
+		return &this->planos[i];
+	}
 	bool delete_plane(Companhia_aerea* companhia, Aviao* aviao); // procurar todos os planos de voo com o aviao x e apaga-los avisando o utilizador que vai apagar planos de voo se continuar...
 	bool existe_pv_aviao(Companhia_aerea* companhia, Aviao* aviao);  //devolve true se existir pelo menos um plano de voo com o Aviao aviao
 	bool apaga_pv_aviao(Companhia_aerea* companhia, Aviao* aviao); //devolve true se apagar
@@ -37,6 +43,8 @@ public:
 	int getNumeroComp(){
 		return companhias.size();
 	}
+	bool add_plano(Plano_de_voo & a);
+	bool del_companhia(Companhia_aerea *a);
 };
 
 

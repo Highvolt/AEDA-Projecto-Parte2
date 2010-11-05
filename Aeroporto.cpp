@@ -63,3 +63,24 @@ vector<string> Aeroporto::nomes_companhias(){
 	 return tmp;
 }
 
+bool Aeroporto::add_plano(Plano_de_voo & a){
+	for(size_t i=0;i<planos.size(); i++){
+		if(!(Compatible(a,planos[i]))){
+			return false;
+		}
+	}
+	planos.push_back(a);
+
+	return true;
+}
+
+bool Aeroporto::del_companhia(Companhia_aerea *a){
+	for(vector<Companhia_aerea>::iterator it=companhias.begin();it<companhias.end();it++){
+		if(*it==*a){
+			companhias.erase(it);
+			return true;
+		}
+	}
+	return false;
+}
+
