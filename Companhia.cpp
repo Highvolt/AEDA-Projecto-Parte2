@@ -17,6 +17,14 @@ Aviao::Aviao(string matricula, string nome, int peso, string tipo, string descri
 	this->peso=peso;
 }
 
+/**
+ * class constructor for a airplane type
+ * @name Tipo_de_aviao
+ * @param string tipo
+ * @param string descricao
+ * @param string categoria
+ *
+ */
 Tipo_de_aviao::Tipo_de_aviao(string tipo, string descricao, string categoria){
 	this->tipo=tipo;
 	this->descricao=descricao;

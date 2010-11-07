@@ -6,6 +6,11 @@
 #include "Companhia.h"
 
 using namespace std;
+/*
+ * Menu generator for basic operations such as choosing options
+ * @param vector<T> dados
+ * @return the option chosen by the user
+ */
 
 template<class T>
 int menu(vector<T> dados){
@@ -31,9 +36,16 @@ int menu(vector<T> dados){
 
 }
 
-
+/*
+ * inicialization of a generic function pointer
+ */
 typedef void (*funcao_generica) (void);
-
+/*
+ * This generates the second base of hour menus, where intel, that our functions return, will be read, used and modified
+ * @param vector<string> &names
+ * @param vector<funcao_generica> &funcoes
+ * @return the opion chosen by the user
+ */
 int menu_generico(vector<string> &names, vector<funcao_generica> &funcoes){
 	if(names.size()!=funcoes.size()){
 		return -1;

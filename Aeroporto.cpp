@@ -75,6 +75,12 @@ bool Aeroporto::add_plano(Plano_de_voo & a){
 }
 
 bool Aeroporto::del_companhia(Companhia_aerea *a){
+	for(vector<Plano_de_voo>::iterator it=planos.begin();it<planos.end();it++){
+		if(*(it->getCompanhia())==*a){
+			planos.erase(it);
+			it=planos.begin();
+		}
+	}
 	for(vector<Companhia_aerea>::iterator it=companhias.begin();it<companhias.end();it++){
 		if(*it==*a){
 			companhias.erase(it);

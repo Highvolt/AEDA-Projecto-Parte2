@@ -163,7 +163,7 @@ public:
 	 * @param Plana_de_voo &b
 	 * @return 0 if the flight plans put themselfs upon each other and 1 if they don't
 	 */
-	friend bool Compatible(Plano_de_voo &a, Plano_de_voo & b){
+	friend bool Compatible(Plano_de_voo &b, Plano_de_voo &a){
 		if(*(a.getCompanhia())==*(b.getCompanhia()) && *(a.getAviao())==*(b.getAviao())){
 			if((b.partida.ano>=a.partida.ano && b.chegada.ano<=a.chegada.ano)){
 				if((b.partida.mes>=a.partida.mes && b.chegada.mes<=a.chegada.mes)){
