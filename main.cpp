@@ -314,7 +314,10 @@ void save(){
 
 
 void ver_planos(){
-	cout<<"Planos de voo"<<endl;
+	cout<<"Planos de voo\n"<<endl;
+	if(aeroporto.getNumPlanos()==0){
+		cout<<"\nNao existem planos de voo disponiveis\n\n"<<endl;
+	}
 	for(size_t i=0; i<aeroporto.getNumPlanos(); i++){
 		cout<<*(aeroporto.getPlano(i))<<endl;
 	}

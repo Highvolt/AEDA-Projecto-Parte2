@@ -2,6 +2,12 @@
 
 using namespace std;
 
+/**
+ * class constructor for a airport
+ * Initializes a airport
+ * @name Aeroporto
+ *
+ */
 Aeroporto::Aeroporto() {
 
 
