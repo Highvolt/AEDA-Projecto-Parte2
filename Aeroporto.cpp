@@ -1,10 +1,3 @@
-/*
- * Aeroporto.cpp
- *
- *  Created on: 1 de Nov de 2010
- *      Author: pedroborges
- */
-
 #include "Aeroporto.h"
 
 using namespace std;

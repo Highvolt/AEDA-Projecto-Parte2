@@ -1,9 +1,3 @@
-/*
- * Plano_de_voo.cpp
- *
- *  Created on: 28 de Out de 2010
- *      Author: pedroborges
- */
 
 #include "Plano_de_voo.h"
 using namespace std;

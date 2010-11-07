@@ -1,9 +1,3 @@
-/*
- * Voos.cpp
- *
- *  Created on: 10 de Out de 2010
- *      Author: pedroborges
- */
 
 #include "Companhia.h"
 
