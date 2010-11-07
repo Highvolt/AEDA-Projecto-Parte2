@@ -46,6 +46,8 @@ Aeroporto aeroporto;
 
 int main(){
 
+	cout<<"Aeroporto system v0.1 by: \n- ei09063 \n- ei09068 \n -ei09010\n"<<endl;
+
 	string names_ar[]={"Adiconar companhia:","gerenciar companhia","ver companhias","ver Planos","save","load","sair"};
 	funcao_generica func_ar[]={&addcomp,&gerenciar_comp,&mostra_companhias,&ver_planos,&save,&load,&sair};
 	vector<string> names(&names_ar[0],&names_ar[7]);
@@ -318,6 +320,7 @@ void ver_planos(){
 	if(aeroporto.getNumPlanos()==0){
 		cout<<"\nNao existem planos de voo disponiveis\n\n"<<endl;
 	}
+	cout<<"partida: <ano | mes | dia | hora | minutos> | chegada : <ano | mes | dia | hora | minutos> | companhia | matricula do aviao | num de passageiros | origem | destino"<<endl<<endl;
 	for(size_t i=0; i<aeroporto.getNumPlanos(); i++){
 		cout<<*(aeroporto.getPlano(i))<<endl;
 	}
