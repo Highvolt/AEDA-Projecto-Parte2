@@ -6,18 +6,24 @@
 CPP_SRCS += \
 ../Aeroporto.cpp \
 ../Companhia.cpp \
+../Pista_aterragem.cpp \
+../Pista_descolagem.cpp \
 ../Plano_de_voo.cpp \
 ../main.cpp 
 
 OBJS += \
 ./Aeroporto.o \
 ./Companhia.o \
+./Pista_aterragem.o \
+./Pista_descolagem.o \
 ./Plano_de_voo.o \
 ./main.o 
 
 CPP_DEPS += \
 ./Aeroporto.d \
 ./Companhia.d \
+./Pista_aterragem.d \
+./Pista_descolagem.d \
 ./Plano_de_voo.d \
 ./main.d 
 

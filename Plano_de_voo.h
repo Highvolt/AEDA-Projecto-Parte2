@@ -12,6 +12,38 @@ struct horas_data{
 	int dia;
 	int mes;
 	int ano;
+public:
+	bool operator<(const horas_data &b) const{
+		horas_data a=*this;
+		if(a.ano<b.ano){
+			return true;
+		}else{
+			if(a.mes<b.mes){
+				return true;
+			}
+			else{
+				if(a.dia<b.dia){
+					return true;
+				}
+				else{
+					if(a.hora<b.hora){
+						return true;
+					}
+					else{
+						if(a.min<b.min){
+							return true;
+						}
+						else{
+							return false;
+						}
+					}
+
+				}
+
+			}
+		}
+	}
+
 };
 
 
@@ -37,10 +69,10 @@ public:
 
 	/**
 	 * Allows the user to see on the screen the information about the flight plan
-     *
-     * @param ostream &out
-     * @param Plano_de_voo x
-     * @return an ostream with the intel of the flight plan
+	 *
+	 * @param ostream &out
+	 * @param Plano_de_voo x
+	 * @return an ostream with the intel of the flight plan
 	 */
 	friend ostream & operator<<(ostream &out, Plano_de_voo x){
 		out<<x.partida.ano<<'|'<<x.partida.mes<<'|'<<x.partida.dia<<'|'<<x.partida.hora<<'|'<<x.partida.min<<'|'
@@ -191,6 +223,14 @@ public:
 		}
 
 	}
+
+	const bool a_chega_pr_b(const Plano_de_voo & A,const Plano_de_voo & B)const{
+		return A.chegada<B.chegada;
+	}
+	const bool a_parte_pr_b(const Plano_de_voo & A,const Plano_de_voo & B)const{
+		return A.partida<B.partida;
+	}
+
 
 };
 
