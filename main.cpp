@@ -41,7 +41,7 @@ void load();
 
 //*********
 
-Aeroporto aeroporto;
+Aeroporto aeroporto(string("PT"));
 
 
 int main(){

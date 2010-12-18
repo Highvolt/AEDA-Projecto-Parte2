@@ -4,17 +4,19 @@
 #include "Companhia.h"
 #include <vector>
 #include "Plano_de_voo.h"
+#include <string>
 
 namespace std {
 
 class Aeroporto {
 private:
+	string nome;
 	vector<Plano_de_voo> planos;
 	vector<Companhia_aerea> companhias;
 
 public:
 
-	Aeroporto();
+	Aeroporto(string  nome);
 
 	/**
 	 *class destructor for a airport
@@ -133,6 +135,14 @@ public:
 	 * @return true if it was deleted with success
 	 */
 	bool del_companhia(Companhia_aerea *a);
+
+
+	string getNome(){
+		return nome;
+	}
+	void SetNome(string nome){
+		this->nome=nome;
+	}
 };
 
 
@@ -163,6 +173,8 @@ public:
 		out<<"A companhia com a sigla "<<x.sigla<<" e nome "<<x.nme<<" ja existe na base de dados.";
 		return out;
 	}
+
+
 
 };
 

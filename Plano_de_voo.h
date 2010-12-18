@@ -43,6 +43,37 @@ public:
 			}
 		}
 	}
+	bool operator==(const horas_data &b) const{
+			horas_data a=*this;
+			if(a.ano!=b.ano){
+				return false;
+			}else{
+				if(a.mes!=b.mes){
+					return false;
+				}
+				else{
+					if(a.dia!=b.dia){
+						return false;
+					}
+					else{
+						if(a.hora!=b.hora){
+							return false;
+						}
+						else{
+							if(a.min!=b.min){
+								return false;
+							}
+							else{
+								return true;
+							}
+						}
+
+					}
+
+				}
+			}
+		}
+
 
 };
 
@@ -229,6 +260,10 @@ public:
 	}
 	const bool a_parte_pr_b(const Plano_de_voo & A,const Plano_de_voo & B)const{
 		return A.partida<B.partida;
+	}
+
+	bool operator==(const Plano_de_voo & a) const{
+		return (this->n_do_voo==a.getDo_voo() && this->partida==a.getPartida() && this->chegada==a.getChegada() && this->companhia==a.getCompanhia());
 	}
 
 

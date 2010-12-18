@@ -8,7 +8,8 @@ using namespace std;
  * @name Aeroporto
  *
  */
-Aeroporto::Aeroporto() {
+Aeroporto::Aeroporto(string  nome) {
+	this->nome=nome;
 
 
 }

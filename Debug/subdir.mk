@@ -9,7 +9,8 @@ CPP_SRCS += \
 ../Pista_aterragem.cpp \
 ../Pista_descolagem.cpp \
 ../Plano_de_voo.cpp \
-../main.cpp 
+../main.cpp \
+../passageiro.cpp 
 
 OBJS += \
 ./Aeroporto.o \
@@ -17,7 +18,8 @@ OBJS += \
 ./Pista_aterragem.o \
 ./Pista_descolagem.o \
 ./Plano_de_voo.o \
-./main.o 
+./main.o \
+./passageiro.o 
 
 CPP_DEPS += \
 ./Aeroporto.d \
@@ -25,7 +27,8 @@ CPP_DEPS += \
 ./Pista_aterragem.d \
 ./Pista_descolagem.d \
 ./Plano_de_voo.d \
-./main.d 
+./main.d \
+./passageiro.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
