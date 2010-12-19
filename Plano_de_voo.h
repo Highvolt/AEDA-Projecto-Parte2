@@ -93,8 +93,11 @@ private:
 	Aviao* aviao;
 	Companhia_aerea* companhia;
 	int n_passageiros;
+	bool arquivado;
+	bool pista;
 
 public:
+
 
 	Plano_de_voo(int hora_partida,int min_partida, int dia_partida, int mes_partida, int ano_partida, int hora_chegada,int min_chegada, int dia_chegada, int mes_chegada, int ano_chegada, Companhia_aerea* companhia, string origem, string destino, Aviao* aviao, int n_passageiros);
 
@@ -266,6 +269,25 @@ public:
 		return (this->n_do_voo==a.getDo_voo() && this->partida==a.getPartida() && this->chegada==a.getChegada() && this->companhia==a.getCompanhia());
 	}
 
+	bool is_arquivado(){
+		return arquivado;
+	}
+
+	bool is_pista(){
+		return pista;
+	}
+
+	void arquivar(){
+		arquivado=true;
+	}
+
+	void por_pista(){
+		pista=true;
+	}
+
+	bool operator<(Plano_de_voo & a) const{
+		return (this->partida<a.getPartida() || this->chegada<a.getChegada());
+	}
 
 };
 

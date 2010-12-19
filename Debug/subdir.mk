@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Aeroporto.cpp \
+../Arquivo_de_voo.cpp \
 ../Companhia.cpp \
 ../Pista_aterragem.cpp \
 ../Pista_descolagem.cpp \
@@ -14,6 +15,7 @@ CPP_SRCS += \
 
 OBJS += \
 ./Aeroporto.o \
+./Arquivo_de_voo.o \
 ./Companhia.o \
 ./Pista_aterragem.o \
 ./Pista_descolagem.o \
@@ -23,6 +25,7 @@ OBJS += \
 
 CPP_DEPS += \
 ./Aeroporto.d \
+./Arquivo_de_voo.d \
 ./Companhia.d \
 ./Pista_aterragem.d \
 ./Pista_descolagem.d \

@@ -65,6 +65,8 @@ Plano_de_voo::Plano_de_voo(int hora_partida,int min_partida, int dia_partida, in
 	this->aviao=aviao;
 
 	this->n_passageiros=n_passageiros;
+	this->arquivado=false;
+	this->pista=false;
 }
 
 Aviao *Plano_de_voo::getAviao() const
