@@ -7,6 +7,7 @@
 
 #include "BST.h"
 #include "Plano_de_voo.h"
+#include "Companhia.h"
 #ifndef ARQUIVO_DE_VOO_H_
 #define ARQUIVO_DE_VOO_H_
 Plano_de_voo PNULL=Plano_de_voo(0,0,0, 0, 0, 0,0,0,0,0, NULL, "","", NULL, 0);
@@ -22,6 +23,8 @@ public:
 	}
 	void insert(Plano_de_voo & a);
 	void remove(Plano_de_voo & a);
+	vector<Plano_de_voo> pesquisa(int d1, int d2);
+	vector<Plano_de_voo> pesquisa(int d1, int d2, Companhia_aerea * comp);
 	virtual ~Arquivo_de_voo();
 };
 

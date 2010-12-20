@@ -44,35 +44,35 @@ public:
 		}
 	}
 	bool operator==(const horas_data &b) const{
-			horas_data a=*this;
-			if(a.ano!=b.ano){
+		horas_data a=*this;
+		if(a.ano!=b.ano){
+			return false;
+		}else{
+			if(a.mes!=b.mes){
 				return false;
-			}else{
-				if(a.mes!=b.mes){
+			}
+			else{
+				if(a.dia!=b.dia){
 					return false;
 				}
 				else{
-					if(a.dia!=b.dia){
+					if(a.hora!=b.hora){
 						return false;
 					}
 					else{
-						if(a.hora!=b.hora){
+						if(a.min!=b.min){
 							return false;
 						}
 						else{
-							if(a.min!=b.min){
-								return false;
-							}
-							else{
-								return true;
-							}
+							return true;
 						}
-
 					}
 
 				}
+
 			}
 		}
+	}
 
 
 };
@@ -95,6 +95,7 @@ private:
 	int n_passageiros;
 	bool arquivado;
 	bool pista;
+	bool parte;
 
 public:
 
@@ -285,8 +286,30 @@ public:
 		pista=true;
 	}
 
-	bool operator<(Plano_de_voo & a) const{
-		return (this->partida<a.getPartida() || this->chegada<a.getChegada());
+	bool operator<(const Plano_de_voo & a) const{
+		if(parte)
+			return (this->partida<a.getPartida());
+		else{
+			return this->chegada<a.getChegada();
+		}
+	}
+
+	void tipo(const string &nome_aeroporto){
+		if(nome_aeroporto==origem){
+			parte=true;
+		}
+		else{
+			if(nome_aeroporto==destino){
+				parte=false;
+			}
+			else{
+				//erro
+			}
+		}
+	}
+
+	bool get_parte(){
+		return parte;
 	}
 
 };

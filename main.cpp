@@ -463,6 +463,7 @@ void planos(Companhia_aerea* comp, Aviao* av){
 	}
 
 	Plano_de_voo tmp(hora,min,dia,mes,ano,hora_c,min_c,dia_c,mes_c,ano_c, comp,origem, destino, av,np);
+	tmp.tipo(aeroporto.getNome());
 	if(tmp.valid()==false){
 		cout<<"Dados invalidos"<<endl;
 	}
