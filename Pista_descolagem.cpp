@@ -62,6 +62,7 @@ vector<Plano_de_voo> Pista_descolagem::get_lista(){
 
 }
 void Pista_descolagem::levantou(Plano_de_voo a){
+	//cout<<"A descolar"<<endl;
 	if(pista.size()!=0){
 
 
@@ -69,11 +70,14 @@ void Pista_descolagem::levantou(Plano_de_voo a){
 			vector<Plano_de_voo> temp=get_lista();
 			priority_queue<Plano_de_voo,vector<Plano_de_voo>,operadordes> pista_t;
 			for(size_t i=0;i<temp.size();i++){
+				//cout<<temp[i]<<endl;
 				if(!(temp[i]==a)){
+					//cout<<"fica"<<endl;
 					pista_t.push(temp[i]);
 				}
 			}
 			pista=pista_t;
+			//cout<<"Pista actualizada"<<endl;
 		}
 		else{
 			pista.pop();

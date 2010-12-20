@@ -17,12 +17,19 @@ Arquivo_de_voo::Arquivo_de_voo():arquivo(PNULL){
 }
 
 void Arquivo_de_voo::insert(Plano_de_voo & a){
-	Plano_de_voo pesq=arquivo.find(a);
-	if(pesq==PNULL){
+	if(arquivo.isEmpty()){
+
 		arquivo.insert(a);
+
 	}
+	else{
 
+		Plano_de_voo pesq=arquivo.find(a);
+		if(pesq==PNULL){
+			arquivo.insert(a);
+		}
 
+	}
 }
 
 void Arquivo_de_voo::remove(Plano_de_voo & a){

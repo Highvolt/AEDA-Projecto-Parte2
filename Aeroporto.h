@@ -160,6 +160,36 @@ public:
 		return this->pista2;
 	}
 
+	void descolar(Plano_de_voo & a){
+		for(vector<Plano_de_voo>::iterator it=this->planos.begin();it!=planos.end();it++){
+			if(*it==a){
+				it->set_arq(true);
+				this->arquivos.insert(*it);
+
+				this->pista2.levantou(a);
+				//cout<<"fim"<<endl;
+				break;
+
+			}
+		}
+
+	}
+
+	void aterrou(Plano_de_voo & a){
+		for(vector<Plano_de_voo>::iterator it=this->planos.begin();it!=planos.end();it++){
+			if(*it==a){
+				it->set_arq(true);
+				this->arquivos.insert(*it);
+
+				this->pista1.aterrou(a);
+				//cout<<"fim"<<endl;
+				break;
+
+			}
+		}
+
+	}
+
 };
 
 

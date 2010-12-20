@@ -67,20 +67,44 @@ int main(){
 
 void gerir_desc(){
 	cout<<"Gerir descolagem: \n"<<endl;
-	vector<Plano_de_voo> nomes=aeroporto.get_pista2().get_lista();
-	cout<<"n de voos: "<<nomes.size()<<endl;
-	for(vector<Plano_de_voo>::iterator it=nomes.begin();it!=nomes.end();it++){
-		cout<<*it<<endl;
+	vector<string> menuz;
+	menuz.push_back("Ver");
+	menuz.push_back("Descolar");
+	menuz.push_back("Sair");
+	int opt=menu(menuz);
+	if(opt!=2){
+		vector<Plano_de_voo> nomes=aeroporto.get_pista2().get_lista();
+		//cout<<"n de voos: "<<nomes.size()<<endl;
+		if(opt==0){
+			for(vector<Plano_de_voo>::iterator it=nomes.begin();it!=nomes.end();it++){
+				cout<<*it<<endl;
+			}
+		}else{
+		opt=menu(nomes);
+		aeroporto.descolar(nomes[opt]);
+		}
 	}
 
 }
 
 void gerir_aterragem(){
-	cout<<"Gerir descolagem: \n"<<endl;
-	vector<Plano_de_voo> nomes=aeroporto.get_pista1().get_lista();
-	cout<<"n de voos: "<<nomes.size()<<endl;
-	for(vector<Plano_de_voo>::iterator it=nomes.begin();it!=nomes.end();it++){
-		cout<<*it<<endl;
+	cout<<"Gerir aterragem: \n"<<endl;
+	vector<string> menuz;
+	menuz.push_back("Ver");
+	menuz.push_back("Aterrar");
+	menuz.push_back("Sair");
+	int opt=menu(menuz);
+	if(opt!=2){
+		vector<Plano_de_voo> nomes=aeroporto.get_pista1().get_lista();
+		//cout<<"n de voos: "<<nomes.size()<<endl;
+		if(opt==0){
+			for(vector<Plano_de_voo>::iterator it=nomes.begin();it!=nomes.end();it++){
+				cout<<*it<<endl;
+			}
+		}else{
+		opt=menu(nomes);
+		aeroporto.aterrou(nomes[opt]);
+		}
 	}
 }
 
@@ -91,7 +115,7 @@ void gerir_pistas(){
 	pistas.push_back("Pista aterragem");
 	int opt=menu(pistas);
 	cout<<opt<<endl;
-	if(opt==1){
+	if(opt==0){
 		gerir_desc();
 	}
 	else{
