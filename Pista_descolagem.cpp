@@ -37,15 +37,19 @@ vector<Plano_de_voo*> Pista_descolagem::get_lista(){
 void Pista_descolagem::levantou(Plano_de_voo* a){
 	if(pista.size()!=0){
 
-		//excepcao
-		if(pista.top().get_p()==(a)){
-			vector<Plano_de_voo*> temp(temp);
-			priority_queue<plano_descolagem> pista_t(pista);
+
+		if(pista.top().get_p()!=(a)){
+			vector<Plano_de_voo*> temp=get_lista();
+			priority_queue<plano_descolagem> pista_t;
 			for(size_t i=0;i<temp.size();i++){
-				if(temp[i]==a){
+				if(temp[i]!=a){
 					pista_t.push(plano_descolagem(temp[i]));
 				}
 			}
+			pista=pista_t;
+		}
+		else{
+			pista.pop();
 		}
 	}
 }

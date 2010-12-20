@@ -10,6 +10,12 @@
 using namespace std;
 
 
+Plano_de_voo PNULL=Plano_de_voo(0,0,0, 0, 0, 0,0,0,0,0, NULL, "","", NULL, 0);
+
+Arquivo_de_voo::Arquivo_de_voo():arquivo(PNULL){
+
+}
+
 void Arquivo_de_voo::insert(Plano_de_voo & a){
 	Plano_de_voo pesq=arquivo.find(a);
 	if(pesq==PNULL){

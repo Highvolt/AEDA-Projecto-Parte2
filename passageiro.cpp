@@ -37,8 +37,8 @@ passageiro::~passageiro() {
 	// TODO Auto-generated destructor stub
 }
 
-Passageiro_tb::Passageiro_tb(passageiro & a){
-	tabela.insert(a);
+Passageiro_tb::Passageiro_tb(){
+
 
 }
 Passageiro_tb::Passageiro_tb(string nome, unsigned long BI, vector<Plano_de_voo> & viagens_realizadas){

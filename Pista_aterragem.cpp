@@ -35,14 +35,18 @@ void Pista_aterragem::aterrou(Plano_de_voo* a){
 	if(pista.size()!=0){
 
 		//excepcao
-		if(pista.top().get_p()==(a)){
-			vector<Plano_de_voo*> temp(temp);
-			priority_queue<plano_aterragem> pista_t(pista);
+		if(pista.top().get_p()!=(a)){
+			vector<Plano_de_voo*> temp=get_lista();
+			priority_queue<plano_aterragem> pista_t;
 			for(size_t i=0;i<temp.size();i++){
-				if(temp[i]==a){
+				if(temp[i]!=a){
 					pista_t.push(plano_aterragem(temp[i]));
 				}
 			}
+			pista=pista_t;
+		}
+		else{
+			pista.pop();
 		}
 	}
 }

@@ -81,7 +81,7 @@ typedef hash_set<passageiro,hpass,eqpass> tabelap;
 class Passageiro_tb{
 	tabelap tabela;
 public:
-	Passageiro_tb(passageiro & a);
+	Passageiro_tb();
 	Passageiro_tb(string nome, unsigned long BI, vector<Plano_de_voo> & viagens_realizadas);
 	void insert(passageiro & a);
 	void insert(string nome, unsigned long BI, vector<Plano_de_voo> & viagens_realizadas);

@@ -5,6 +5,10 @@
 #include <vector>
 #include "Plano_de_voo.h"
 #include <string>
+#include "Pista_aterragem.h"
+#include "Pista_descolagem.h"
+#include "Arquivo_de_voo.h"
+#include "passageiro.h"
 
 namespace std {
 
@@ -13,6 +17,10 @@ private:
 	string nome;
 	vector<Plano_de_voo> planos;
 	vector<Companhia_aerea> companhias;
+	Pista_aterragem pista1;
+	Pista_descolagem pista2;
+	Passageiro_tb passageiros;
+	Arquivo_de_voo arquivos;
 
 public:
 
