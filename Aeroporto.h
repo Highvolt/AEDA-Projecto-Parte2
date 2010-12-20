@@ -151,6 +151,15 @@ public:
 	void SetNome(string nome){
 		this->nome=nome;
 	}
+
+	Pista_aterragem get_pista1() const{
+		return this->pista1;
+	}
+
+	Pista_descolagem get_pista2() const{
+		return this->pista2;
+	}
+
 };
 
 
@@ -181,6 +190,7 @@ public:
 		out<<"A companhia com a sigla "<<x.sigla<<" e nome "<<x.nme<<" ja existe na base de dados.";
 		return out;
 	}
+
 
 
 

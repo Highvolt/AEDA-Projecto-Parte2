@@ -14,30 +14,28 @@
 
 
 namespace std {
-class plano_descolagem{
-	Plano_de_voo *a;
+
+
+class operadordes{
 public:
-	Plano_de_voo* get_p()const{
-		return a;
+	bool operator()(const Plano_de_voo  ab, const Plano_de_voo  bb) const{
+		return ab.getPartida()>bb.getPartida();
+
 	}
-	plano_descolagem(Plano_de_voo *a){
-		this->a=a;
-	}
-	bool operator<(const plano_descolagem &b) const{
-		return this->a->a_chega_pr_b(*(this->a),*(b.get_p()));
-	}
+
 };
 
 class Pista_descolagem {
 	int id;
 	static int max_id;
-	priority_queue<plano_descolagem> pista;
+	//vector<Plano_de_voo> pistav;
+	priority_queue<Plano_de_voo,vector<Plano_de_voo>,operadordes> pista;
 public:
 	Pista_descolagem();
 	virtual ~Pista_descolagem();
-	vector<Plano_de_voo*> get_lista();
-	void levantou(Plano_de_voo* a);
-	void entrou_na_fila(Plano_de_voo* a);
+	vector<Plano_de_voo> get_lista();
+	void levantou(Plano_de_voo a);
+	void entrou_na_fila(Plano_de_voo a);
 };
 
 }

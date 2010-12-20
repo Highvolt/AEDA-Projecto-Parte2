@@ -2,6 +2,7 @@
 
 #include "Companhia.h"
 #include "Aeroporto.h"
+#include "Plano_de_voo.h"
 #include "misc.h"
 #include <string>
 #include <vector>
@@ -38,6 +39,7 @@ void mostra_companhias();
 void ver_planos();
 void save();
 void load();
+void gerir_pistas();
 
 //*********
 
@@ -46,14 +48,15 @@ Aeroporto aeroporto(string("PT"));
 
 int main(){
 
-	cout<<"Aeroporto system v0.1 by: \n- ei09063 \n- ei09068 \n -ei09010\n"<<endl;
+	cout<<"Aeroporto system v0.2 by: \n- ei09063 \n- ei09068 \n -ei09010\n"<<endl;
+	cout<<"\tAeroporto: "<<aeroporto.getNome()<<endl;
 
-	string names_ar[]={"Adiconar companhia:","gerenciar companhia","ver companhias","ver Planos","save","load","sair"};
-	funcao_generica func_ar[]={&addcomp,&gerenciar_comp,&mostra_companhias,&ver_planos,&save,&load,&sair};
-	vector<string> names(&names_ar[0],&names_ar[7]);
-	vector<funcao_generica> func(&func_ar[0],&func_ar[7]);
+	string names_ar[]={"Adiconar companhia:","gerenciar companhia","gerir pistas","ver companhias","ver Planos","save","load","sair"};
+	funcao_generica func_ar[]={&addcomp,&gerenciar_comp, &gerir_pistas,&mostra_companhias,&ver_planos,&save,&load,&sair};
+	vector<string> names(&names_ar[0],&names_ar[8]);
+	vector<funcao_generica> func(&func_ar[0],&func_ar[8]);
 	int opt=0;
-	while (opt!=7){
+	while (opt!=8){
 		opt=menu_generico(names,func);
 
 	}
@@ -61,6 +64,42 @@ int main(){
 
 	return 0;
 }
+
+void gerir_desc(){
+	cout<<"Gerir descolagem: \n"<<endl;
+	vector<Plano_de_voo> nomes=aeroporto.get_pista2().get_lista();
+	cout<<"n de voos: "<<nomes.size()<<endl;
+	for(vector<Plano_de_voo>::iterator it=nomes.begin();it!=nomes.end();it++){
+		cout<<*it<<endl;
+	}
+
+}
+
+void gerir_aterragem(){
+	cout<<"Gerir descolagem: \n"<<endl;
+	vector<Plano_de_voo> nomes=aeroporto.get_pista1().get_lista();
+	cout<<"n de voos: "<<nomes.size()<<endl;
+	for(vector<Plano_de_voo>::iterator it=nomes.begin();it!=nomes.end();it++){
+		cout<<*it<<endl;
+	}
+}
+
+
+void gerir_pistas(){
+	vector<string> pistas;
+	pistas.push_back("Pista descolagem");
+	pistas.push_back("Pista aterragem");
+	int opt=menu(pistas);
+	cout<<opt<<endl;
+	if(opt==1){
+		gerir_desc();
+	}
+	else{
+		gerir_aterragem();
+	}
+}
+
+
 void load(){
 	fstream filecomp;
 	filecomp.open(filenamecomp.c_str(),fstream::in);
@@ -235,6 +274,7 @@ void load(){
 				av+=tmp[i];
 			}
 			i++;
+			conv="";
 			for(;i<tmp.size() && tmp[i]!='|';i++){
 				conv+=tmp[i];
 			}
@@ -246,10 +286,17 @@ void load(){
 			}
 			i++;
 
-			for(;i<tmp.size() && tmp[i]!='\n';i++){
+			for(;i<tmp.size() && tmp[i]!='|';i++){
 				destino+=tmp[i];
 			}
+			bool arquivado;
+			string arqt="";
+			for(;i<tmp.size() && tmp[i]!='\n';i++){
+				arqt+=tmp[i];
+			}
+			arquivado=atoi(arqt.c_str());
 			Plano_de_voo tmppv(horap,minp,diap,mesp,anop,horac,minc,diac,mesc,anoc, aeroporto.apt_companhia(comp),origem, destino, aeroporto.apt_companhia(comp)->aviao_ptr(av),n_pass);
+			tmppv.set_arq(arquivado);
 			if(tmppv.valid()==false){
 				cout<<"Dados invalidos"<<endl;
 			}
@@ -463,7 +510,7 @@ void planos(Companhia_aerea* comp, Aviao* av){
 	}
 
 	Plano_de_voo tmp(hora,min,dia,mes,ano,hora_c,min_c,dia_c,mes_c,ano_c, comp,origem, destino, av,np);
-	tmp.tipo(aeroporto.getNome());
+
 	if(tmp.valid()==false){
 		cout<<"Dados invalidos"<<endl;
 	}
@@ -481,6 +528,7 @@ void planos(Companhia_aerea* comp, Aviao* av){
 
 void gerav(Companhia_aerea* comp){
 	int opt=menu(comp->getAvioes());
+
 	planos(comp,comp->aviao_ptr(opt));
 }
 

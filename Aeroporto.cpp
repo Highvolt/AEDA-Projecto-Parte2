@@ -69,7 +69,19 @@ bool Aeroporto::add_plano(Plano_de_voo & a){
 			return false;
 		}
 	}
+	a.tipo(this->nome);
+	if(a.getOrigem()!=this->nome && a.getDestino()!=this->nome){
+		return false;
+	}
 	planos.push_back(a);
+	if(!a.get_arquivado()){
+	if(a.get_parte()){
+		this->pista2.entrou_na_fila(a);
+	}
+	else{
+		this->pista1.entrou_na_fila(a);
+	}
+	}
 
 	return true;
 }

@@ -14,30 +14,23 @@
 
 namespace std {
 
-class plano_aterragem{
-	Plano_de_voo *a;
+class operadorat{
 public:
-	Plano_de_voo* get_p()const{
-		return a;
-	}
-	plano_aterragem(Plano_de_voo *a){
-		this->a=a;
-	}
-	bool operator<(const plano_aterragem &b) const{
-		return this->a->a_chega_pr_b(*(this->a),*(b.get_p()));
+	bool operator()(const Plano_de_voo  a, const Plano_de_voo  b) const{
+		return (a.getChegada()>b.getChegada());
 	}
 };
 
 class Pista_aterragem {
 	int id;
 	static int max_id;
-	priority_queue<plano_aterragem> pista;
+	priority_queue<Plano_de_voo,vector<Plano_de_voo>,operadorat> pista;
 public:
 	Pista_aterragem();
 	virtual ~Pista_aterragem();
-	vector<Plano_de_voo*> get_lista();
-	void aterrou(Plano_de_voo* a);
-	void entrou_na_fila(Plano_de_voo* a);
+	vector<Plano_de_voo> get_lista();
+	void aterrou(Plano_de_voo a);
+	void entrou_na_fila(Plano_de_voo a);
 };
 
 }

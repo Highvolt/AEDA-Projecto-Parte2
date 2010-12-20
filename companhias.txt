@@ -1,2 +1,1 @@
-tap|transportadora aerea
-lft|luftansa
+Tap|tap

@@ -18,30 +18,80 @@ public:
 		if(a.ano<b.ano){
 			return true;
 		}else{
-			if(a.mes<b.mes){
-				return true;
-			}
-			else{
-				if(a.dia<b.dia){
+			if(a.ano==b.ano){
+				if(a.mes<b.mes){
 					return true;
 				}
 				else{
-					if(a.hora<b.hora){
-						return true;
-					}
-					else{
-						if(a.min<b.min){
+					if(a.mes==b.mes){
+						if(a.dia<b.dia){
 							return true;
 						}
 						else{
-							return false;
+							if(a.dia==b.dia){
+								if(a.hora<b.hora){
+									return true;
+								}
+								else{
+
+									if(a.hora==b.hora){
+										if(a.min<b.min){
+											return true;
+										}
+										else{
+											return false;
+										}
+									}
+
+								}
+
+							}
 						}
 					}
-
 				}
-
 			}
 		}
+		return false;
+	}
+	bool operator>(const horas_data &b) const{
+		horas_data a=*this;
+		if(a.ano>b.ano){
+			return true;
+		}else{
+			if(a.ano==b.ano){
+				if(a.mes>b.mes){
+					return true;
+				}
+				else{
+					if(a.mes==b.mes){
+						if(a.dia>b.dia){
+							return true;
+						}
+						else{
+							if(a.dia==b.dia){
+								if(a.hora>b.hora){
+									return true;
+								}
+								else{
+
+									if(a.hora==b.hora){
+										if(a.min>b.min){
+											return true;
+										}
+										else{
+											return false;
+										}
+									}
+
+								}
+
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 	bool operator==(const horas_data &b) const{
 		horas_data a=*this;
@@ -99,7 +149,7 @@ private:
 
 public:
 
-
+	Plano_de_voo(){}
 	Plano_de_voo(int hora_partida,int min_partida, int dia_partida, int mes_partida, int ano_partida, int hora_chegada,int min_chegada, int dia_chegada, int mes_chegada, int ano_chegada, Companhia_aerea* companhia, string origem, string destino, Aviao* aviao, int n_passageiros);
 
 	/**
@@ -111,7 +161,7 @@ public:
 	 */
 	friend ostream & operator<<(ostream &out, Plano_de_voo x){
 		out<<x.partida.ano<<'|'<<x.partida.mes<<'|'<<x.partida.dia<<'|'<<x.partida.hora<<'|'<<x.partida.min<<'|'
-				<<x.chegada.ano<<'|'<<x.chegada.mes<<'|'<<x.chegada.dia<<'|'<<x.chegada.hora<<'|'<<x.chegada.min<<'|'<<x.companhia->getSigla()<<'|'<<x.aviao->getMatricula()<<'|'<<x.n_passageiros<<'|'<<x.origem<<'|'<<x.destino<<endl;
+				<<x.chegada.ano<<'|'<<x.chegada.mes<<'|'<<x.chegada.dia<<'|'<<x.chegada.hora<<'|'<<x.chegada.min<<'|'<<x.companhia->getSigla()<<'|'<<x.aviao->getMatricula()<<'|'<<x.n_passageiros<<'|'<<x.origem<<'|'<<x.destino<< '|'<<x.arquivado<<endl;
 		return out;
 	}
 
@@ -308,6 +358,13 @@ public:
 		}
 	}
 
+	void set_arq(bool arq){
+		arquivado=arq;
+	}
+
+	bool get_arquivado(){
+		return arquivado;
+	}
 	bool get_parte(){
 		return parte;
 	}
