@@ -161,7 +161,7 @@ public:
 	 */
 	friend ostream & operator<<(ostream &out, Plano_de_voo x){
 		out<<x.partida.ano<<'|'<<x.partida.mes<<'|'<<x.partida.dia<<'|'<<x.partida.hora<<'|'<<x.partida.min<<'|'
-				<<x.chegada.ano<<'|'<<x.chegada.mes<<'|'<<x.chegada.dia<<'|'<<x.chegada.hora<<'|'<<x.chegada.min<<'|'<<x.companhia->getSigla()<<'|'<<x.aviao->getMatricula()<<'|'<<x.n_passageiros<<'|'<<x.origem<<'|'<<x.destino<< '|'<<x.arquivado<<endl;
+				<<x.chegada.ano<<'|'<<x.chegada.mes<<'|'<<x.chegada.dia<<'|'<<x.chegada.hora<<'|'<<x.chegada.min<<'|'<<x.companhia->getSigla()<<'|'<<x.aviao->getMatricula()<<'|'<<x.n_passageiros<<'|'<<x.origem<<'|'<<x.destino<< '|'<<x.arquivado;//<<endl;
 		return out;
 	}
 

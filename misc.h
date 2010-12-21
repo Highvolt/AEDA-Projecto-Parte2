@@ -37,7 +37,7 @@ int menu(vector<T> dados){
 }
 
 /*
- * inicialization of a generic function pointer
+ * startup of a generic function pointer
  */
 typedef void (*funcao_generica) (void);
 /*
@@ -70,6 +70,9 @@ int menu_generico(vector<string> &names, vector<funcao_generica> &funcoes){
 
 }
 
+/*
+ * startup of a pointer to a air company
+ */
 
 
 typedef void (*funcao)(Companhia_aerea*);

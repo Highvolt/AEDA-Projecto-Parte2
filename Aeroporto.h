@@ -145,22 +145,48 @@ public:
 	 */
 	bool del_companhia(Companhia_aerea *a);
 
-
+	/*
+	 * gives the name to the user
+	 * @name getNome
+	 * @return nome
+	 */
 	string getNome(){
 		return nome;
 	}
+
+	/*
+	* sets the aircompany name
+	* @name SetNome
+	*/
 	void SetNome(string nome){
 		this->nome=nome;
 	}
+
+	/*
+		 * returns the track
+		 * @name get_pista1
+		 * @return pista1
+		 */
 
 	Pista_aterragem get_pista1() const{
 		return this->pista1;
 	}
 
+	/*
+	 * returns another track
+	 * @name get_pista2
+	 * @return pista2
+	 */
 	Pista_descolagem get_pista2() const{
 		return this->pista2;
 	}
 
+	/*
+	 * takes an airplane from the priority queue
+	 * @name descolar
+	 * @param Plano_de_voo & a
+	 *
+	 */
 	void descolar(Plano_de_voo & a){
 		for(vector<Plano_de_voo>::iterator it=this->planos.begin();it!=planos.end();it++){
 			if(*it==a){
@@ -176,6 +202,13 @@ public:
 
 	}
 
+		/*
+		 * takes an airplane from the priority queue
+		 * @name descolar
+		 * @param Plano_de_voo & a
+		 *
+		 */
+
 	void aterrou(Plano_de_voo & a){
 		for(vector<Plano_de_voo>::iterator it=this->planos.begin();it!=planos.end();it++){
 			if(*it==a){
@@ -190,26 +223,55 @@ public:
 		}
 
 	}
+
+	/*
+	 * returns an archive
+	 * @name getArquivo
+	 * @return Arquivo_de_voo
+	 */
 	Arquivo_de_voo getArquivo(){
 		return this->arquivos;
 	}
+
+	/*
+	 * returns the rate
+	 * @name getTaxa
+	 * @return float taxas
+	 */
 
 	float getTaxa(){
 		return this->taxas;
 	}
 
+	/*
+	 * sets the rate
+	 * @name setTaxa
+	 * @param float taxa
+	 */
 	void setTaxa(float taxa){
 		this->taxas=taxa;
 	}
-
+	/*
+	 * returns the passengers
+	 * @name getPassageiros
+	 * @return passageiros
+	 */
 	Passageiro_tb getPassageiros(){
 		return this->passageiros;
 	}
-
+	/*
+	 * adds a passenger to passenger table
+	 * @name PassIn
+	 * @param passageiro & a
+	 */
 	void PassIn(passageiro & a){
 		passageiros.insert(a);
 	}
-
+	/*
+	 * deletes a passenger from the passenger table
+	 * @name PassOut
+	 * @param passageiro & a
+	 */
 	void PassOut(passageiro & a){
 		passageiros.deletep(a);
 	}

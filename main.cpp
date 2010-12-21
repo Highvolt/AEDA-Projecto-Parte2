@@ -96,15 +96,38 @@ void deletepas(){
 	int opt=menu(pass);
 	aeroporto.PassOut(pass[opt]);
 }
+
+
+void addplanopass(){
+	vector<passageiro> pass=aeroporto.getPassageiros().getPassageiros();
+	int opt=menu(pass);
+	aeroporto.PassOut(pass[opt]);
+	vector<Plano_de_voo> planos;
+	for(size_t i=0; i<aeroporto.getNumPlanos(); i++){
+		planos.push_back(*(aeroporto.getPlano(i)));
+	}
+	int opt2=menu(planos);
+	pass[opt].adicionar_voo(planos[opt2]);
+	aeroporto.PassIn(pass[opt]);
+}
+
+
+
 void editpas(){
 	vector<string> nomes;
 	nomes.push_back("Apagar");
+	nomes.push_back("Adiconar Plano");
 	int opt=menu(nomes);
 	if(opt==0){
 		deletepas();
 	}
+	else{
+		addplanopass();
+	}
 
 }
+
+
 
 
 
@@ -577,7 +600,7 @@ void load(){
 	passageiros.open(filename_pass.c_str(),fstream::in);
 	if(passageiros.is_open()){
 		string tmp;
-		while(getline(passageiros,tmp)){
+		while(getline(passageiros,tmp) && tmp.size()>2){
 			//cout<<"start"<<endl;
 			string nome="";
 			string bistr="";
@@ -595,79 +618,91 @@ void load(){
 			BI=atol(bistr.c_str());
 			//cout<<nome<<BI<<endl;
 			//cout<<"OLA"<<endl;
-			cout<<tmp[i];
+			//cout<<tmp[i];
 			if(tmp[i]!='\n' && i<tmp.size()){
 				//cout<<"COCO"<<endl;
+				i++;
 				while(tmp[i]!='\n'  && i<tmp.size()){
-					i++;
 
+
+
+					//cout<<tmp[i]<<endl;
 					int anop=-1,mesp=-1,diap=-1,horap=-1,minp=-1;
 					int anoc=-1,mesc=-1,diac=-1,horac=-1,minc=-1;
 					string origem="",destino="";
 					string comp="",av="";
 					int n_pass=-1;
-					size_t i=0;
+					//size_t i=0;
 					string conv="";
 					for(;i<tmp.size() && tmp[i]!='|';i++){
 						conv+=tmp[i];
 					}
 					i++;
-					anop=atoi(conv.c_str());
+					anop=atoi(conv.c_str()); //
+					//cout<<"Ano:"<<anop<<endl;
 					conv="";
 					for(;i<tmp.size() && tmp[i]!='|';i++){
 						conv+=tmp[i];
 					}
 					i++;
 					mesp=atoi(conv.c_str());
+					//cout<<mesp<<endl;  //
 					conv="";
 					for(;i<tmp.size() && tmp[i]!='|';i++){
 						conv+=tmp[i];
 					}
 					i++;
 					diap=atoi(conv.c_str());
+					//cout<<diap<<endl;  //
 					conv="";
 					for(;i<tmp.size() && tmp[i]!='|';i++){
 						conv+=tmp[i];
 					}
 					i++;
 					horap=atoi(conv.c_str());
+					//cout<<horap<<endl;  //
 					conv="";
 					for(;i<tmp.size() && tmp[i]!='|';i++){
 						conv+=tmp[i];
 					}
 					i++;
 					minp=atoi(conv.c_str());
+					//cout<<minp<<endl;  //
 					conv="";
 					for(;i<tmp.size() && tmp[i]!='|';i++){
 						conv+=tmp[i];
 					}
 					i++;
 					anoc=atoi(conv.c_str());
+					//cout<<anoc<<endl;  //
 					conv="";
 					for(;i<tmp.size() && tmp[i]!='|';i++){
 						conv+=tmp[i];
 					}
 					i++;
 					mesc=atoi(conv.c_str());
+					//cout<<mesc<<endl;  //
 					conv="";
 					for(;i<tmp.size() && tmp[i]!='|';i++){
 						conv+=tmp[i];
 					}
 					i++;
 					diac=atoi(conv.c_str());
+					//cout<<diac<<endl;  //
 					conv="";
 					for(;i<tmp.size() && tmp[i]!='|';i++){
 						conv+=tmp[i];
 					}
 					i++;
 					horac=atoi(conv.c_str());
+					//cout<<horac<<endl;  //
 					conv="";
 					for(;i<tmp.size() && tmp[i]!='|';i++){
 						conv+=tmp[i];
 					}
 					i++;
 					minc=atoi(conv.c_str());
-
+					//cout<<minc<<endl;
 					for(;i<tmp.size() && tmp[i]!='|';i++){
 						comp+=tmp[i];
 					}
@@ -691,16 +726,20 @@ void load(){
 					for(;i<tmp.size() && tmp[i]!='|';i++){
 						destino+=tmp[i];
 					}
+					i++;
 					bool arquivado;
 					string arqt="";
-					i++;
+
 					for(;i<tmp.size() && tmp[i]!='\n' && tmp[i]!='|';i++){
 						arqt+=tmp[i];
 						//cout<<"arquivado "<<arqt<<endl;
 					}
+					i++;
+					//cout<<"Final"<<tmp[i]<<endl;
 					arquivado=atoi(arqt.c_str());
 					Plano_de_voo tmppv(horap,minp,diap,mesp,anop,horac,minc,diac,mesc,anoc, aeroporto.apt_companhia(comp),origem, destino, aeroporto.apt_companhia(comp)->aviao_ptr(av),n_pass);
 					tmppv.set_arq(arquivado);
+					//cout<<tmppv<<endl; //
 					plat.push_back(tmppv);
 
 				}
@@ -752,7 +791,7 @@ void save(){
 	planos.open(filenameplanos.c_str(),fstream::out |fstream::trunc);
 	if(planos.is_open()){
 		for(size_t i=0;i<aeroporto.getNumPlanos();i++){
-			planos<<*aeroporto.getPlano(i);
+			planos<<*aeroporto.getPlano(i)<<endl;
 
 		}
 	}

@@ -15,7 +15,10 @@
 namespace std {
 
 int Pista_descolagem::max_id=0;
-
+/*
+ * creates a new runway
+ * @name Pista_descolagem
+ */
 Pista_descolagem::Pista_descolagem() {
 	id=max_id++;
 
@@ -88,7 +91,7 @@ void Pista_descolagem::levantou(Plano_de_voo a){
 
 
 void Pista_descolagem::entrou_na_fila(Plano_de_voo a){
-	cout<<"ENTROU DESCOLAGEM"<<a<<endl;
+	//cout<<"ENTROU DESCOLAGEM"<<a<<endl;
 	pista.push(a);
 	//pistav.push_back(a);
 	//cout<<pistav.size()<<endl;

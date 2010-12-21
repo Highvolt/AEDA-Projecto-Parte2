@@ -11,7 +11,10 @@
 namespace std {
 
 int Pista_aterragem::max_id=0;
-
+/*
+* creates a new landing strip
+* @name Pista_aterragem
+*/
 Pista_aterragem::Pista_aterragem() {
 	id=max_id++;
 
@@ -59,7 +62,7 @@ void Pista_aterragem::aterrou(Plano_de_voo a){
 
 
 void Pista_aterragem::entrou_na_fila(Plano_de_voo a){
-	cout<<"ENTROU ATERRAGEM"<<a<<endl;
+	//cout<<"ENTROU ATERRAGEM"<<a<<endl;
 	pista.push(a);
 }
 

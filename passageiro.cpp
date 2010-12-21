@@ -8,7 +8,12 @@
 #include "passageiro.h"
 
 using namespace std;
-
+/*
+ * creates a new passenger
+ * @name passageiro
+ * @param string nome=""
+ * @param unsigned long int n_BI=0
+ */
 passageiro::passageiro(string nome, unsigned long int n_BI) {
 	this->n_BI=n_BI;
 	this->name=nome;
