@@ -15,7 +15,7 @@
 namespace std {
 
 int Pista_descolagem::max_id=0;
-/*
+/**
  * creates a new runway
  * @name Pista_descolagem
  */

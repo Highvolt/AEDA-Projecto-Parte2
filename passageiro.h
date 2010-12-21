@@ -13,7 +13,7 @@ class passageiro {
 	unsigned long int n_BI;
 	vector<Plano_de_voo> viagens_realizadas;
 public:
-	/*
+	/**
 	 * creates a new passenger
 	 * @name passageiro
 	 * @param string nome=""
@@ -21,7 +21,7 @@ public:
 	 */
 	passageiro(string nome="", unsigned long int n_BI=0);
 
-	/*
+	/**
 	 * creates a new passenger
 	 * @name passageiro
 	 * @param string nome
@@ -30,14 +30,14 @@ public:
 	 */
 	passageiro(string nome, unsigned long int n_BI, vector<Plano_de_voo> via);
 
-	/*
+	/**
 	 * adds the airplanes to the vector
 	 * @name adicionar_voo
 	 * @param Plano_de_voo a
 	 */
 	void adicionar_voo(Plano_de_voo  a);
 
-	/*
+	/**
 	 * class destructor of passengers
 	 * @name ~passageiro
 	 */
@@ -74,7 +74,7 @@ public:
 	}
 
 
-	/*
+	/**
 	 * allows the user to watch the name of the passenger
 	 * @name <<
 	 * @param ostream & out
@@ -110,7 +110,7 @@ struct eqpass {
 		return p1.getBI()==p2.getBI();
 	}
 };
-/*
+/**
  * creating a hash_table
  * @name tableap
  * @return a hash_table
@@ -120,12 +120,12 @@ typedef hash_set<passageiro,hpass,eqpass> tabelap;
 class Passageiro_tb{
 	tabelap tabela;
 public:
-	/*
+	/**
 	 * creates a passengers hash table
 	 * @name Passageiro_tb
 	 */
 	Passageiro_tb();
-	/*
+	/**
 	 * creates a passengers hash table
 	 * @name Passageiro_tb
 	 * @param string nome
@@ -134,13 +134,13 @@ public:
 	 */
 
 	Passageiro_tb(string nome, unsigned long BI, vector<Plano_de_voo> & viagens_realizadas);
-	/*
+	/**
 	 * inserts a new passenger in the hash table
 	 * @name insert
 	 * @param passageiro & a
 	 */
 	void insert(passageiro & a);
-	/*
+	/**
 	 * inserts a new passenger in the hash table with the given caracteristics
 	 * @name insert
 	 * @param string nome
@@ -150,7 +150,7 @@ public:
 	 */
 	void insert(string nome, unsigned long BI, vector<Plano_de_voo> & viagens_realizadas);
 
-	/*
+	/**
 	 * returns a vector of passengers in the hash table
 	 * @name getPassageiros
 	 * @return a vector of passengers
@@ -162,7 +162,7 @@ public:
 		}
 		return temp;
 	}
-	/*
+	/**
 	 * finds a given passenger in the hash table of passengers
 	 * @name find
 	 * @param passageiro & a
@@ -170,14 +170,14 @@ public:
 	 */
 	passageiro find(passageiro & a);
 
-	/*
+	/**
 	 * deletes a passenger from the hash table of passengers
 	 * @name deletep
 	 * @param passageiro & a
 	 */
 	void deletep(passageiro & a );
 
-	/*
+	/**
 	 * returns the hash table of passengers
 	 * @name getTAB
 	 * @return the hash table
@@ -186,7 +186,7 @@ public:
 		return tabela;
 	}
 
-	/*
+	/**
 	 *allows the user to see the hash table of passengers
 	 *@name <<
 	 *@param ostream & out
@@ -204,4 +204,4 @@ public:
 
 };
 
-#endif /* PASSAGEIRO_H_ */
+#endif /** PASSAGEIRO_H_ */

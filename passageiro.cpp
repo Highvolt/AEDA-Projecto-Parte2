@@ -8,7 +8,7 @@
 #include "passageiro.h"
 
 using namespace std;
-/*
+/**
  * creates a new passenger
  * @name passageiro
  * @param string nome=""

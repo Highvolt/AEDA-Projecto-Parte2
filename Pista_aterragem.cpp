@@ -11,7 +11,7 @@
 namespace std {
 
 int Pista_aterragem::max_id=0;
-/*
+/**
 * creates a new landing strip
 * @name Pista_aterragem
 */

@@ -1,4 +1,4 @@
-/*
+/**
  * Pista_descolagem.h
  *
  *  Created on: 11 de Dez de 2010
@@ -19,7 +19,7 @@ namespace std {
 class operadordes{
 public:
 
-	/*
+	/**
 	 * this operator compares departures
 	 * @name ()
 	 * @param const Plano_de_voo ab
@@ -39,25 +39,25 @@ class Pista_descolagem {
 	//vector<Plano_de_voo> pistav;
 	priority_queue<Plano_de_voo,vector<Plano_de_voo>,operadordes> pista;
 public:
-	/*
+	/**
 	 * creates a new runway
 	 * @name Pista_descolagem
 	 */
 	Pista_descolagem();
 
-	/*
+	/**
 	 * class destructor for a runway
 	 * @name ~Pista_descolagem
 	 */
 	virtual ~Pista_descolagem();
 
-	/*
+	/**
 	 * return every flight scheduled for this runway
 	 * @name get_lista
 	 * @returns a vector of flights in this runway
 	 */
 	vector<Plano_de_voo> get_lista();
-	/*
+	/**
 	 * takeoff an airplane by inserting it in the queue
 	 * @name elvantou
 	 * @param Plano_de_voo a
@@ -65,7 +65,7 @@ public:
 	 */
 	void levantou(Plano_de_voo a);
 
-	/*
+	/**
 	 * puts an airplane waiting to takeoff
 	 * @name entrou_na_fila
 	 * @param Plano_de_voo a
@@ -75,4 +75,4 @@ public:
 
 }
 
-#endif /* PISTA_DESCOLAGEM_H_ */
+#endif /** PISTA_DESCOLAGEM_H_ */

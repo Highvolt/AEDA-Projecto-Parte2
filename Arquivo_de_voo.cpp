@@ -12,7 +12,7 @@ using namespace std;
 
 Plano_de_voo PNULL=Plano_de_voo(0,0,0, 0, 0, 0,0,0,0,0, NULL, "","", NULL, 0);
 
-/*
+/**
  * creates a new flight archive
  * @name Arquivo_de_voo
  */
