@@ -7,7 +7,7 @@
 
 #ifndef PASSAGEIRO_H_
 #define PASSAGEIRO_H_
-
+#include <iostream>
 #include <vector>
 #include "Plano_de_voo.h"
 #include <list>
@@ -56,6 +56,16 @@ public:
 		this->viagens_realizadas = viagens_realizadas;
 	}
 
+	friend ostream & operator<<(ostream & out, passageiro a){
+		out<<a.name<<'|'<<a.n_BI;
+		vector<Plano_de_voo> planos=a.getViagens_realizadas();
+		for(vector<Plano_de_voo>::iterator it=planos.begin();it!=planos.end(); it++){
+			out<<'|'<<*it;
+		}
+		out<<endl;
+		return out;
+	}
+
 };
 
 
@@ -85,9 +95,25 @@ public:
 	Passageiro_tb(string nome, unsigned long BI, vector<Plano_de_voo> & viagens_realizadas);
 	void insert(passageiro & a);
 	void insert(string nome, unsigned long BI, vector<Plano_de_voo> & viagens_realizadas);
+	vector<passageiros> getPassageiros(){
+		vector<passageiro> temp;
+		for(vector<passageiro>::iterator it=tabela.begin();it!=tabela.end();it++){
+			temp.push_back(*it);
+		}
+		return temp;
+	}
 	passageiro find( unsigned long BI);
 	void deletep(unsigned long BI);
-
+	tabelap getTAB(){
+		return tabela;
+	}
+	friend ostream & operator<<(ostream & out, Passageiro_tb & a){
+		tabelap copia=a.getTAB();
+		for(tabelap::iterator it=copia.begin();it!=copia.end();it++){
+			out<<*it;
+		}
+		return out;
+	}
 
 
 };

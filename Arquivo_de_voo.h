@@ -23,8 +23,9 @@ public:
 	Arquivo_de_voo();
 	void insert(Plano_de_voo & a);
 	void remove(Plano_de_voo & a);
-	vector<Plano_de_voo> pesquisa(int d1, int d2);
-	vector<Plano_de_voo> pesquisa(int d1, int d2, Companhia_aerea * comp);
+	vector<Plano_de_voo> pesquisa(horas_data d1, horas_data d2);
+	vector<Plano_de_voo> pesquisa(horas_data d1, horas_data d2, Companhia_aerea * comp);
+	vector<Plano_de_voo> pesquisa(Companhia_aerea * comp);
 	virtual ~Arquivo_de_voo();
 
 	friend ostream & operator<<(ostream & out, Arquivo_de_voo x) {

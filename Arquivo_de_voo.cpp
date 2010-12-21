@@ -41,25 +41,25 @@ void Arquivo_de_voo::remove(Plano_de_voo & a){
 
 }
 
-vector<Plano_de_voo> Arquivo_de_voo::pesquisa(int d1, int d2){
+vector<Plano_de_voo> Arquivo_de_voo::pesquisa(horas_data d1, horas_data d2){
 	vector<Plano_de_voo> planos;
 	BSTItrIn<Plano_de_voo> itr(arquivo);
 	while((! itr.isAtEnd()) ){
 		Plano_de_voo actual=itr.retrieve();
 
 		if(actual.get_parte()){
-			if(actual.getPartida().dia>d2){
+			if(actual.getPartida()>d2){
 				return planos;
 			}
-			if(actual.getPartida().dia>=d1){
+			if(!(actual.getPartida()<d1)){
 				planos.push_back(actual);
 			}
 		}
 		else{
-			if(actual.getChegada().dia>d2){
+			if(actual.getChegada()>d2){
 				return planos;
 			}
-			if(actual.getChegada().dia>=d1){
+			if(!(actual.getChegada()<d1)){
 				planos.push_back(actual);
 			}
 		}
@@ -69,25 +69,25 @@ vector<Plano_de_voo> Arquivo_de_voo::pesquisa(int d1, int d2){
 	return planos;
 }
 
-vector<Plano_de_voo> Arquivo_de_voo::pesquisa(int d1, int d2, Companhia_aerea * comp){
+vector<Plano_de_voo> Arquivo_de_voo::pesquisa(horas_data d1, horas_data d2, Companhia_aerea * comp){
 	vector<Plano_de_voo> planos;
 	BSTItrIn<Plano_de_voo> itr(arquivo);
 	while((! itr.isAtEnd()) ){
 		Plano_de_voo actual=itr.retrieve();
 
 		if(actual.get_parte()){
-			if(actual.getPartida().dia>d2){
+			if(actual.getPartida()>d2){
 				return planos;
 			}
-			if(actual.getPartida().dia>=d1 && actual.getCompanhia()==comp){
+			if(!(actual.getPartida()<d1) && actual.getCompanhia()==comp){
 				planos.push_back(actual);
 			}
 		}
 		else{
-			if(actual.getChegada().dia>d2){
+			if(actual.getChegada()>d2){
 				return planos;
 			}
-			if(actual.getChegada().dia>=d1 && actual.getCompanhia()==comp){
+			if(!(actual.getChegada()<d1) && actual.getCompanhia()==comp){
 				planos.push_back(actual);
 			}
 		}
@@ -96,6 +96,25 @@ vector<Plano_de_voo> Arquivo_de_voo::pesquisa(int d1, int d2, Companhia_aerea * 
 
 	return planos;
 }
+
+
+vector<Plano_de_voo> Arquivo_de_voo::pesquisa(Companhia_aerea * comp){
+	vector<Plano_de_voo> planos;
+	BSTItrIn<Plano_de_voo> itr(arquivo);
+	while((! itr.isAtEnd()) ){
+		Plano_de_voo actual=itr.retrieve();
+
+
+			if(actual.getCompanhia()==comp){
+				planos.push_back(actual);
+			}
+
+		itr.advance();
+	}
+
+	return planos;
+}
+
 
 
 

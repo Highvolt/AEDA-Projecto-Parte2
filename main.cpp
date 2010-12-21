@@ -3,6 +3,8 @@
 #include "Companhia.h"
 #include "Aeroporto.h"
 #include "Plano_de_voo.h"
+#include "passageiro.h"
+#include "hash_set.h"
 #include "misc.h"
 #include <string>
 #include <vector>
@@ -40,6 +42,8 @@ void ver_planos();
 void save();
 void load();
 void gerir_pistas();
+void garquivo();
+void gpas();
 
 //*********
 
@@ -51,12 +55,12 @@ int main(){
 	cout<<"Aeroporto system v0.2 by: \n- ei09063 \n- ei09068 \n -ei09010\n"<<endl;
 	cout<<"\tAeroporto: "<<aeroporto.getNome()<<endl;
 
-	string names_ar[]={"Adiconar companhia:","gerenciar companhia","gerir pistas","ver companhias","ver Planos","save","load","sair"};
-	funcao_generica func_ar[]={&addcomp,&gerenciar_comp, &gerir_pistas,&mostra_companhias,&ver_planos,&save,&load,&sair};
-	vector<string> names(&names_ar[0],&names_ar[8]);
-	vector<funcao_generica> func(&func_ar[0],&func_ar[8]);
+	string names_ar[]={"Adiconar companhia:","gerenciar companhia","gerir pistas","Consultar arquivo","Gest‹o de passageiros","ver companhias","ver Planos","save","load","sair"};
+	funcao_generica func_ar[]={&addcomp,&gerenciar_comp, &gerir_pistas,&garquivo,&gpas,&mostra_companhias,&ver_planos,&save,&load,&sair};
+	vector<string> names(&names_ar[0],&names_ar[10]);
+	vector<funcao_generica> func(&func_ar[0],&func_ar[10]);
 	int opt=0;
-	while (opt!=8){
+	while (opt!=10){
 		opt=menu_generico(names,func);
 
 	}
@@ -64,6 +68,227 @@ int main(){
 
 	return 0;
 }
+
+void addpas(){
+	cout<<"Adicionar Passageiro "<<endl<<endl;
+	string nome;
+	string bistr;
+	unsigned long BI=0;
+	vector<Plano_de_voo> planos;
+	cout<<"Nome: ";
+	getline(cin, nome);
+	while(BI==0){
+		cout<<"N¼ BI";
+		getline(cin,bistr);
+		BI=atol(bistr.c_str());
+	}
+	passageiro tmp(nome,BI,planos);
+	aeroporto.PassIn(tmp);
+}
+
+void verpas(){
+	Passageiro_tb a=aeroporto.getPassageiros();
+	cout<<a<<endl;
+
+}
+void deletepas(){
+	vector<passageiro> pass=aeroporto.getPassageiros().getPassageiros();
+	int opt=menu(pass);
+	aeroporto.PassOut(pass[opt].getBI());
+}
+void editpas(){
+	vector<string> nomes;
+	nomes.push_back("Apagar");
+	int opt=menu(nomes);
+	if(opt==0){
+		deletepas();
+	}
+
+}
+
+
+
+void gpas(){
+	vector<string> nomes;
+	nomes.push_back("Adicionar");
+	nomes.push_back("Ver");
+	nomes.push_back("Editar");
+	nomes.push_back("Sair");
+	int opt=menu(nomes);
+	switch(opt){
+	case 0:
+		addpas();
+
+	case 1:
+		verpas();
+
+	case 2:
+		editpas();
+
+	}
+
+}
+
+horas_data scandata(){
+	horas_data temp;
+	int ano=-1,mes=-1,dia=-1,hora=-1,min=-1;
+	cout<<"\nAno: ";
+	string pesotmp;
+	while(ano<0){
+		getline(cin, pesotmp);
+		ano=atoi(pesotmp.c_str());
+	}
+	cout<<"\nmes: ";
+	while(mes<=0 || mes>12){
+		getline(cin, pesotmp);
+		mes=atoi(pesotmp.c_str());
+	}
+	cout<<"\ndia: ";
+	while(dia<=0 || dia>31 ){
+		getline(cin, pesotmp);
+		dia=atoi(pesotmp.c_str());
+	}
+	cout<<"\nhora: ";
+	while(hora<0 || hora>=24){
+		getline(cin, pesotmp);
+		hora=atoi(pesotmp.c_str());
+	}
+	cout<< "\nminutos: ";
+	while(min<0 || min>=60){
+		getline(cin, pesotmp);
+		min=atoi(pesotmp.c_str());
+	}
+	temp.ano=ano;
+	temp.mes=mes;
+	temp.dia=dia;
+	temp.hora=hora;
+	temp.min=min;
+	return temp;
+}
+
+void pesqarqdata(){
+	horas_data d1;
+	horas_data d2;
+	cout<<"\n**DE:"<<endl;
+	d1=scandata();
+	cout<<"\n**ATE:"<<endl;
+	d2=scandata();
+	vector<Plano_de_voo> res=aeroporto.getArquivo().pesquisa(d1,d2);
+	if(res.size()!=0){
+		cout<<"Resultados da Pesquisa"<<endl;
+		for(vector<Plano_de_voo>::iterator it=res.begin(); it!=res.end();it++){
+			cout<<*it<<endl;
+		}
+	}
+}
+void pesqarqdatacomp(){
+	horas_data d1;
+	horas_data d2;
+	cout<<"\n**DE:"<<endl;
+	d1=scandata();
+	cout<<"\n**ATE:"<<endl;
+	d2=scandata();
+	vector<string> comp=aeroporto.nomes_companhias();
+	vector<Plano_de_voo> res=aeroporto.getArquivo().pesquisa(d1,d2,aeroporto.apt_companhia(menu(comp)));
+	if(res.size()!=0){
+		cout<<"Resultados da Pesquisa"<<endl;
+		for(vector<Plano_de_voo>::iterator it=res.begin(); it!=res.end();it++){
+			cout<<*it<<endl;
+		}
+	}
+
+}
+
+void arqsearch(){
+	vector<string> nomes;
+	nomes.push_back("Data");
+	nomes.push_back("Data e Companhia");
+	nomes.push_back("Sair");
+	int opt=menu(nomes);
+	if(opt==0){
+		pesqarqdata();
+	}
+	else{
+		if(opt==1){
+			pesqarqdatacomp();
+		}
+	}
+
+}
+
+void calctaxa(){
+	vector<string> nomes;
+	nomes.push_back("Por data e companhia");
+	nomes.push_back("Por companhia");
+	int opt=menu(nomes);
+	if(opt==0){
+		horas_data d1;
+		horas_data d2;
+		cout<<"\n**DE:"<<endl;
+		d1=scandata();
+		cout<<"\n**ATE:"<<endl;
+		d2=scandata();
+		vector<string> comp=aeroporto.nomes_companhias();
+		vector<Plano_de_voo> res=aeroporto.getArquivo().pesquisa(d1,d2,aeroporto.apt_companhia(menu(comp)));
+		if(res.size()!=0){
+			cout<<"Taxa: "<<res.size()*aeroporto.getTaxa()<<endl;
+		}
+	}
+	else{
+		vector<string> comp=aeroporto.nomes_companhias();
+		vector<Plano_de_voo> res=aeroporto.getArquivo().pesquisa(aeroporto.apt_companhia(menu(comp)));
+		if(res.size()!=0){
+			cout<<"Taxa: "<<res.size()*aeroporto.getTaxa()<<endl;
+		}
+
+	}
+
+
+}
+
+
+void alt_taxa(){
+	float nova=-1;
+	string temp;
+	while(nova<0){
+		getline(cin,temp);
+		nova=atof(temp.c_str());
+	}
+	aeroporto.setTaxa(nova);
+
+}
+
+void taxes_calc(){
+	cout<<"Calculo de Taxa"<<endl<<endl;
+	cout<<"Taxa actual : "<<aeroporto.getTaxa()<<endl;
+	vector<string> nomes;
+	nomes.push_back("Calcular Taxa");
+	nomes.push_back("Alterar Taxa");
+	nomes.push_back("Sair");
+	int opt=menu(nomes);
+	if(opt==0){
+		calctaxa();
+	}
+	if(opt==1){
+		alt_taxa();
+	}
+
+}
+
+void garquivo(){
+	vector<string> nomes;
+	nomes.push_back("Ver");
+	nomes.push_back("Pesquisar");
+	nomes.push_back("Calculo Taxas");
+	nomes.push_back("Sair");
+	int opt=menu(nomes);
+	switch(opt){
+	case 0: cout<<aeroporto.getArquivo()<<endl; break;
+	case 1: arqsearch();break;
+	case 2: taxes_calc();break;
+	}
+}
+
 
 void gerir_desc(){
 	cout<<"Gerir descolagem: \n"<<endl;
@@ -80,8 +305,8 @@ void gerir_desc(){
 				cout<<*it<<endl;
 			}
 		}else{
-		opt=menu(nomes);
-		aeroporto.descolar(nomes[opt]);
+			opt=menu(nomes);
+			aeroporto.descolar(nomes[opt]);
 		}
 	}
 
@@ -102,8 +327,8 @@ void gerir_aterragem(){
 				cout<<*it<<endl;
 			}
 		}else{
-		opt=menu(nomes);
-		aeroporto.aterrou(nomes[opt]);
+			opt=menu(nomes);
+			aeroporto.aterrou(nomes[opt]);
 		}
 	}
 }
@@ -315,8 +540,10 @@ void load(){
 			}
 			bool arquivado;
 			string arqt="";
+			i++;
 			for(;i<tmp.size() && tmp[i]!='\n';i++){
 				arqt+=tmp[i];
+				//cout<<"arquivado "<<arqt<<endl;
 			}
 			arquivado=atoi(arqt.c_str());
 			Plano_de_voo tmppv(horap,minp,diap,mesp,anop,horac,minc,diac,mesc,anoc, aeroporto.apt_companhia(comp),origem, destino, aeroporto.apt_companhia(comp)->aviao_ptr(av),n_pass);

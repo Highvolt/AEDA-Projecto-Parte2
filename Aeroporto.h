@@ -14,6 +14,7 @@ namespace std {
 
 class Aeroporto {
 private:
+	float taxas;
 	string nome;
 	vector<Plano_de_voo> planos;
 	vector<Companhia_aerea> companhias;
@@ -188,6 +189,29 @@ public:
 			}
 		}
 
+	}
+	Arquivo_de_voo getArquivo(){
+		return this->arquivos;
+	}
+
+	float getTaxa(){
+		return this->taxas;
+	}
+
+	void setTaxa(float taxa){
+		this->taxas=taxa;
+	}
+
+	Passageiro_tb getPassageiros(){
+		return this->passageiros;
+	}
+
+	void PassIn(passageiro & a){
+		passageiros.insert(a);
+	}
+
+	void PassOut(unsigned long BI){
+		passageiros.deletep(BI);
 	}
 
 };

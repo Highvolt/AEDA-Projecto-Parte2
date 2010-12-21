@@ -12,6 +12,7 @@ using namespace std;
 passageiro::passageiro(string nome, unsigned long int n_BI) {
 	this->n_BI=n_BI;
 	this->name=nome;
+	this->viagens_realizadas=vector<Plano_de_voo>();
 
 }
 

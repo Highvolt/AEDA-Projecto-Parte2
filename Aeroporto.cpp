@@ -55,12 +55,12 @@ bool Aeroporto::apaga_pv_aviao(Companhia_aerea* companhia, Aviao* aviao){
 }
 
 vector<string> Aeroporto::nomes_companhias(){
-	 vector<string> tmp(companhias.size(),"");
-	 for(size_t it=0;it<companhias.size();it++){
-		 tmp[it]=companhias[it].getNome();
-	 }
+	vector<string> tmp(companhias.size(),"");
+	for(size_t it=0;it<companhias.size();it++){
+		tmp[it]=companhias[it].getNome();
+	}
 
-	 return tmp;
+	return tmp;
 }
 
 bool Aeroporto::add_plano(Plano_de_voo & a){
@@ -75,12 +75,14 @@ bool Aeroporto::add_plano(Plano_de_voo & a){
 	}
 	planos.push_back(a);
 	if(!a.get_arquivado()){
-	if(a.get_parte()){
-		this->pista2.entrou_na_fila(a);
-	}
-	else{
-		this->pista1.entrou_na_fila(a);
-	}
+		if(a.get_parte()){
+			this->pista2.entrou_na_fila(a);
+		}
+		else{
+			this->pista1.entrou_na_fila(a);
+		}
+	}else{
+		this->arquivos.insert(a);
 	}
 
 	return true;
