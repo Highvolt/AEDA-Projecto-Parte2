@@ -70,8 +70,8 @@ void Passageiro_tb::insert(string nome, unsigned long BI, vector<Plano_de_voo> &
 	}
 
 }
-passageiro Passageiro_tb::find( unsigned long BI){
-	passageiro a("",BI,vector<Plano_de_voo>());
+passageiro Passageiro_tb::find(passageiro & a){
+
 	tabelap::iterator it=tabela.find(a);
 	if(it==tabela.end()){
 		//not found - excepcao
@@ -79,8 +79,8 @@ passageiro Passageiro_tb::find( unsigned long BI){
 	}
 	return *it;
 }
-void Passageiro_tb::deletep(unsigned long BI){
-	passageiro a("",BI,vector<Plano_de_voo>());
+void Passageiro_tb::deletep(passageiro & a){
+
 	tabelap::iterator it=tabela.find(a);
 	if(it==tabela.end()){
 		//not found - excepcao

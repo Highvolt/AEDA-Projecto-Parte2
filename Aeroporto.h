@@ -210,8 +210,8 @@ public:
 		passageiros.insert(a);
 	}
 
-	void PassOut(unsigned long BI){
-		passageiros.deletep(BI);
+	void PassOut(passageiro & a){
+		passageiros.deletep(a);
 	}
 
 };

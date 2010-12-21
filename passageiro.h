@@ -95,15 +95,15 @@ public:
 	Passageiro_tb(string nome, unsigned long BI, vector<Plano_de_voo> & viagens_realizadas);
 	void insert(passageiro & a);
 	void insert(string nome, unsigned long BI, vector<Plano_de_voo> & viagens_realizadas);
-	vector<passageiros> getPassageiros(){
+	vector<passageiro> getPassageiros(){
 		vector<passageiro> temp;
-		for(vector<passageiro>::iterator it=tabela.begin();it!=tabela.end();it++){
+		for(tabelap::iterator it=tabela.begin();it!=tabela.end();it++){
 			temp.push_back(*it);
 		}
 		return temp;
 	}
-	passageiro find( unsigned long BI);
-	void deletep(unsigned long BI);
+	passageiro find(passageiro & a);
+	void deletep(passageiro & a );
 	tabelap getTAB(){
 		return tabela;
 	}

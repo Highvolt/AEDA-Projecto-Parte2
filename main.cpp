@@ -94,7 +94,7 @@ void verpas(){
 void deletepas(){
 	vector<passageiro> pass=aeroporto.getPassageiros().getPassageiros();
 	int opt=menu(pass);
-	aeroporto.PassOut(pass[opt].getBI());
+	aeroporto.PassOut(pass[opt]);
 }
 void editpas(){
 	vector<string> nomes;
@@ -117,13 +117,13 @@ void gpas(){
 	int opt=menu(nomes);
 	switch(opt){
 	case 0:
-		addpas();
+		addpas();break;
 
 	case 1:
-		verpas();
+		verpas();break;
 
 	case 2:
-		editpas();
+		editpas();break;
 
 	}
 
@@ -354,6 +354,13 @@ void load(){
 	filecomp.open(filenamecomp.c_str(),fstream::in);
 	if(filecomp.is_open()){
 		string tmp;
+
+		getline(filecomp,tmp);
+
+		aeroporto.SetNome(tmp);
+		getline(filecomp,tmp);
+		aeroporto.setTaxa(atof(tmp.c_str()));
+
 		while(getline(filecomp,tmp)){
 			string sigla="",nome="";
 			size_t i=0;
@@ -564,6 +571,145 @@ void load(){
 		}
 
 	}
+	//*******passageiros***
+	fstream passageiros;
+	string filename_pass="Passageiros.txt";
+	passageiros.open(filename_pass.c_str(),fstream::in);
+	if(passageiros.is_open()){
+		string tmp;
+		while(getline(passageiros,tmp)){
+			//cout<<"start"<<endl;
+			string nome="";
+			string bistr="";
+			unsigned long BI=0;
+			vector<Plano_de_voo> plat;
+			int i=0;
+			for(;i<tmp.size() && tmp[i]!='|';i++ ){
+				nome+=tmp[i];
+			}
+			i++;
+			for(;i<tmp.size() && tmp[i]!='|' && tmp[i]!='\n';i++){
+				bistr+=tmp[i];
+			}
+
+			BI=atol(bistr.c_str());
+			//cout<<nome<<BI<<endl;
+			//cout<<"OLA"<<endl;
+			cout<<tmp[i];
+			if(tmp[i]!='\n' && i<tmp.size()){
+				//cout<<"COCO"<<endl;
+				while(tmp[i]!='\n'  && i<tmp.size()){
+					i++;
+
+					int anop=-1,mesp=-1,diap=-1,horap=-1,minp=-1;
+					int anoc=-1,mesc=-1,diac=-1,horac=-1,minc=-1;
+					string origem="",destino="";
+					string comp="",av="";
+					int n_pass=-1;
+					size_t i=0;
+					string conv="";
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						conv+=tmp[i];
+					}
+					i++;
+					anop=atoi(conv.c_str());
+					conv="";
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						conv+=tmp[i];
+					}
+					i++;
+					mesp=atoi(conv.c_str());
+					conv="";
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						conv+=tmp[i];
+					}
+					i++;
+					diap=atoi(conv.c_str());
+					conv="";
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						conv+=tmp[i];
+					}
+					i++;
+					horap=atoi(conv.c_str());
+					conv="";
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						conv+=tmp[i];
+					}
+					i++;
+					minp=atoi(conv.c_str());
+					conv="";
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						conv+=tmp[i];
+					}
+					i++;
+					anoc=atoi(conv.c_str());
+					conv="";
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						conv+=tmp[i];
+					}
+					i++;
+					mesc=atoi(conv.c_str());
+					conv="";
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						conv+=tmp[i];
+					}
+					i++;
+					diac=atoi(conv.c_str());
+					conv="";
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						conv+=tmp[i];
+					}
+					i++;
+					horac=atoi(conv.c_str());
+					conv="";
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						conv+=tmp[i];
+					}
+					i++;
+					minc=atoi(conv.c_str());
+
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						comp+=tmp[i];
+					}
+					i++;
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						av+=tmp[i];
+					}
+					i++;
+					conv="";
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						conv+=tmp[i];
+					}
+					i++;
+					n_pass=atoi(conv.c_str());
+
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						origem+=tmp[i];
+					}
+					i++;
+
+					for(;i<tmp.size() && tmp[i]!='|';i++){
+						destino+=tmp[i];
+					}
+					bool arquivado;
+					string arqt="";
+					i++;
+					for(;i<tmp.size() && tmp[i]!='\n' && tmp[i]!='|';i++){
+						arqt+=tmp[i];
+						//cout<<"arquivado "<<arqt<<endl;
+					}
+					arquivado=atoi(arqt.c_str());
+					Plano_de_voo tmppv(horap,minp,diap,mesp,anop,horac,minc,diac,mesc,anoc, aeroporto.apt_companhia(comp),origem, destino, aeroporto.apt_companhia(comp)->aviao_ptr(av),n_pass);
+					tmppv.set_arq(arquivado);
+					plat.push_back(tmppv);
+
+				}
+			}
+			passageiro tmp(nome, BI, plat);
+			aeroporto.PassIn(tmp);
+
+		}
+	}
 
 }
 
@@ -572,6 +718,8 @@ void save(){
 	fstream filecomp;
 	filecomp.open(filenamecomp.c_str(),fstream::out |fstream::trunc);
 	if(filecomp.is_open()){
+		filecomp<<aeroporto.getNome()<<endl;
+		filecomp<<aeroporto.getTaxa()<<endl;
 		for(size_t i=0;i<aeroporto.getNumeroComp();i++){
 			filecomp<<*aeroporto.apt_companhia(i);
 			fstream compav;
@@ -607,6 +755,15 @@ void save(){
 			planos<<*aeroporto.getPlano(i);
 
 		}
+	}
+
+	//*****passageiros****
+	fstream passageiros;
+	string filename_pass="Passageiros.txt";
+	passageiros.open(filename_pass.c_str(),fstream::out |fstream::trunc);
+	if(passageiros.is_open()){
+		Passageiro_tb a=aeroporto.getPassageiros();
+		passageiros<<a;
 	}
 
 }
